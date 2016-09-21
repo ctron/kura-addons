@@ -1,0 +1,45 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <groupId>de.dentrassi.kura.amqp</groupId>
+    <artifactId>de.dentrassi.kura.amqp-parent</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <relativePath>..</relativePath>
+  </parent>
+
+  <artifactId>de.dentrassi.kura.apache.qpid.jms.client</artifactId>
+  <version>0.11.0</version>
+
+  <packaging>bundle</packaging>
+
+  <name>Apache Qpid™ JMS client wrapper</name>
+  <description>Wrapping Apache Qpid™ JMS client as OSGi bundle</description>
+
+  <dependencies>
+    <dependency>
+      <groupId>org.apache.qpid</groupId>
+      <artifactId>qpid-jms-client</artifactId>
+      <version>0.11.0</version>
+    </dependency>
+  </dependencies>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.felix</groupId>
+        <artifactId>maven-bundle-plugin</artifactId>
+        <extensions>true</extensions>
+        <configuration>
+          <instructions>
+            <Bundle-SymbolicName>de.dentrassi.kura.amqp.apache.qpid.jms.client</Bundle-SymbolicName>
+            <Embed-Dependency>*;scope=compile</Embed-Dependency>
+            <Export-Package>org.apache.qpid.*</Export-Package>
+            <DynamicImport-Package>*</DynamicImport-Package>
+          </instructions>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+</project>

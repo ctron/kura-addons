@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<MetaData xmlns="http://www.osgi.org/xmlns/metatype/v1.2.0" localization="en_us">
+    <OCD id="de.dentrassi.kura.example.camel.amqp.ExampleRouterJava"
+         name="Camel Kura AMQP quickstart" description="AMQP quickstart example for Eclipse Kura™">
+        
+        <AD id="brokerUrl" name="AMQP broker URL"
+            description="The URL of the AMQP broker to connect to. For example: amqp://localhost:5672"
+            type="String" max="4096" cardinality="1" required="true" default="amqp://localhost:5672"/>
+            
+        <AD id="topic" name="AMQP topic name"
+            description="The name of the AMQP topic to publish to"
+            type="String" max="128" cardinality="1" required="true" default="test"/>
+        
+        <Icon resource="OSGI-INF/logo.png" size="32" />
+    </OCD>
+
+    <Designate pid="de.dentrassi.kura.example.camel.amqp.ExampleRouterJava">
+        <Object ocdref="de.dentrassi.kura.example.camel.amqp.ExampleRouterJava"/>
+    </Designate>
+</MetaData>
