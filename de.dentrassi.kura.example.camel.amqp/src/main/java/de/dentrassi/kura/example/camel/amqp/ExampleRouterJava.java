@@ -16,11 +16,15 @@ import org.apache.camel.CamelContext;
 import org.apache.camel.component.amqp.AMQPComponent;
 import org.eclipse.kura.camel.router.AbstractCamelRouter;
 import org.eclipse.kura.configuration.ConfigurableComponent;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * Example for using AMQP
  */
 public class ExampleRouterJava extends AbstractCamelRouter implements ConfigurableComponent {
+
+    private static final Logger logger = LoggerFactory.getLogger(ExampleRouterJava.class);
 
     private String brokerUrl;
     private String topic;
@@ -30,29 +34,42 @@ public class ExampleRouterJava extends AbstractCamelRouter implements Configurab
         loadProperties(null);
     }
 
-    public void updated(Map<String, Object> properties) throws Exception {
+    public void start(final Map<String, Object> properties) throws Exception {
+        logger.info("Starting");
+        
+        loadProperties(properties);
+        super.start();
+    }
+
+    public void updated(final Map<String, Object> properties) throws Exception {
+        logger.info("Updating");
+        
         stop();
         loadProperties(properties);
         start();
     }
 
-    private void loadProperties(Map<String, Object> properties) {
+    private void loadProperties(final Map<String, Object> properties) {
         this.brokerUrl = asString(properties, "brokerUrl", "amqp://localhost:5672");
         this.topic = asString(properties, "topic", "test");
+
+        logger.info("Properties loaded - brokerUrl: {}, topic: {}", this.brokerUrl, this.topic);
     }
 
     @Override
-    protected void registerFeatures(CamelContext camelContext) {
-        final AMQPComponent amqp = AMQPComponent.amqpComponent(brokerUrl);
+    protected void registerFeatures(final CamelContext camelContext) {
+        final AMQPComponent amqp = AMQPComponent.amqpComponent(this.brokerUrl);
         camelContext.addComponent("amqp", amqp);
     }
 
     @Override
     public void configure() {
-        from("timer:test").setBody().simple("foo").to("amqp:topic://" + topic);
+        logger.info("Configure - brokerUrl: {}, topic: {}", this.brokerUrl, this.topic);
+
+        from("timer:test").setBody().simple("foo").to("amqp:topic://" + this.topic);
     }
 
-    private String asString(final Map<String, Object> properties, final String key, final String defaultValue) {
+    private static String asString(final Map<String, Object> properties, final String key, final String defaultValue) {
         final Object value = properties != null ? properties.get(key) : null;
 
         if (value instanceof String) {
