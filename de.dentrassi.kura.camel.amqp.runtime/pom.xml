@@ -64,7 +64,7 @@
     </dependency>
 
     <dependency>
-      <groupId>de.dentrassi.kura</groupId>
+      <groupId>${project.groupId}</groupId>
       <artifactId>de.dentrassi.kura.apache.qpid.jms.client</artifactId>
       <version>0.11.0</version>
     </dependency>
