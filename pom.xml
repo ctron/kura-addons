@@ -1,51 +1,87 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
 
-  <groupId>de.dentrassi.kura.amqp</groupId>
-  <artifactId>de.dentrassi.kura.amqp-parent</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
-  <packaging>pom</packaging>
+    <groupId>de.dentrassi.kura.amqp</groupId>
+    <artifactId>de.dentrassi.kura.amqp-parent</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <packaging>pom</packaging>
 
-  <properties>
-    <camel-version>2.17.2</camel-version>
-    <spring-version>4.1.4.RELEASE_2</spring-version>
-    <netty-version>4.0.41.Final</netty-version>
-  </properties>
+    <name>AMQP example for Eclipse Kura</name>
+    <description>This is an example project on how to deploy AMQP to Eclipse Kura</description>
 
-  <modules>
-    <module>de.dentrassi.kura.apache.qpid.jms.client</module>
-    <module>de.dentrassi.kura.camel.amqp.runtime</module>
-    <module>de.dentrassi.kura.example.camel.amqp</module>
-  </modules>
+    <inceptionYear>2016</inceptionYear>
 
-  <build>
-    <pluginManagement>
-      <plugins>
-        <plugin>
-          <groupId>de.dentrassi.maven</groupId>
-          <artifactId>osgi-dp</artifactId>
-          <version>0.3.0</version>
-        </plugin>
+    <licenses>
+        <license>
+            <name>The Apache Software License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
 
-        <plugin>
-          <groupId>org.apache.felix</groupId>
-          <artifactId>maven-bundle-plugin</artifactId>
-          <version>3.2.0</version>
-          <extensions>true</extensions>
-        </plugin>
+    <developers>
+        <developer>
+            <id>ctron</id>
+            <name>Jens Reimann</name>
+            <email>jreimann@redhat.com</email>
+            <url>https://dentrassi.de</url>
 
-        <plugin>
-          <groupId>org.apache.maven.plugins</groupId>
-          <artifactId>maven-compiler-plugin</artifactId>
-          <version>3.5.1</version>
-          <configuration>
-            <source>1.7</source>
-            <target>1.7</target>
-          </configuration>
-        </plugin>
-      </plugins>
-    </pluginManagement>
-  </build>
+            <organization>Red Hat</organization>
+            <organizationUrl>http://redhat.com</organizationUrl>
+        </developer>
+    </developers>
+
+    <scm>
+        <url>https://github.com/ctron/de.dentrassi.kura.amqp</url>
+        <connection>scm:git:git@github.com:ctron/de.dentrassi.kura.amqp.git</connection>
+        <tag>HEAD</tag>
+    </scm>
+
+    <issueManagement>
+        <url>https://github.com/ctron/de.dentrassi.kura.amqp/issues</url>
+        <system>GitHub Issues</system>
+    </issueManagement>
+
+    <properties>
+        <camel-version>2.17.2</camel-version>
+        <spring-version>4.1.4.RELEASE_2</spring-version>
+        <netty-version>4.0.41.Final</netty-version>
+    </properties>
+
+    <modules>
+        <module>de.dentrassi.kura.apache.qpid.jms.client</module>
+        <module>de.dentrassi.kura.camel.amqp.runtime</module>
+        <module>de.dentrassi.kura.example.camel.amqp</module>
+    </modules>
+
+    <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>de.dentrassi.maven</groupId>
+                    <artifactId>osgi-dp</artifactId>
+                    <version>0.3.0</version>
+                </plugin>
+
+                <plugin>
+                    <groupId>org.apache.felix</groupId>
+                    <artifactId>maven-bundle-plugin</artifactId>
+                    <version>3.2.0</version>
+                    <extensions>true</extensions>
+                </plugin>
+
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <version>3.5.1</version>
+                    <configuration>
+                        <source>1.7</source>
+                        <target>1.7</target>
+                    </configuration>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
 
 </project>
