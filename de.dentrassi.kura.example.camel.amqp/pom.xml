@@ -23,6 +23,10 @@
             <id>kura.packagedrone</id>
             <url>http://packagedrone.eclipse.org/maven/eclipse-kura-2.1</url>
         </repository>
+        <repository>
+            <id>kura</id>
+            <url>http://repo.eclipse.org/content/repositories/kura-releases/</url>
+        </repository>
     </repositories>
 
     <dependencies>
@@ -47,7 +51,7 @@
         <dependency> <!-- pulled from kura.packagedrone -->
             <groupId>org.eclipse.kura</groupId>
             <artifactId>org.eclipse.kura.api</artifactId>
-            <version>1.0.9-SNAPSHOT</version>
+            <version>1.0.9</version>
         </dependency>
     </dependencies>
 
