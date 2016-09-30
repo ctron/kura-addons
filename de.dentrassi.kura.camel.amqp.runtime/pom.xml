@@ -4,7 +4,7 @@
     <parent>
         <groupId>de.dentrassi.kura.amqp</groupId>
         <artifactId>de.dentrassi.kura.amqp-parent</artifactId>
-        <version>0.0.2-SNAPSHOT</version>
+        <version>0.0.2</version>
         <relativePath>..</relativePath>
     </parent>
 
@@ -65,7 +65,7 @@
         <dependency>
             <groupId>${project.groupId}</groupId>
             <artifactId>de.dentrassi.kura.apache.qpid.jms.client</artifactId>
-            <version>0.11.1-SNAPSHOT</version>
+            <version>0.0.2</version>
         </dependency>
 
         <dependency>
