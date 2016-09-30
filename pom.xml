@@ -10,6 +10,8 @@
     <name>AMQP example for Eclipse Kura</name>
     <description>This is an example project on how to deploy AMQP to Eclipse Kura</description>
 
+    <url>https://github.com/ctron/de.dentrassi.kura.amqp</url>
+
     <inceptionYear>2016</inceptionYear>
 
     <licenses>
