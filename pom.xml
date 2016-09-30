@@ -54,7 +54,6 @@
     <modules>
         <module>de.dentrassi.kura.apache.qpid.jms.client</module>
         <module>de.dentrassi.kura.camel.amqp.runtime</module>
-        <module>de.dentrassi.kura.example.camel.amqp</module>
     </modules>
 
     <build>
