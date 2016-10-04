@@ -62,7 +62,6 @@
     </properties>
 
     <modules>
-        <module>de.dentrassi.kura.apache.qpid.jms.client</module>
         <module>de.dentrassi.kura.camel.amqp.runtime</module>
     </modules>
 
