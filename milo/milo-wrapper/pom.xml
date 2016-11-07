@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>de.dentrassi.kura.addons</groupId>
+        <artifactId>milo</artifactId>
+        <version>0.1.0-SNAPSHOT</version>
+        <relativePath>..</relativePath>
+    </parent>
+
+    <artifactId>milo-wrapper</artifactId>
+
+    <packaging>bundle</packaging>
+
+    <repositories>
+        <repository>
+            <id>oss</id>
+            <url>https://oss.sonatype.org/content/groups/staging/</url>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </repository>
+    </repositories>
+
+    <dependencies>
+        <dependency>
+            <groupId>de.dentrassi.camel.milo</groupId>
+            <artifactId>camel-milo</artifactId>
+            <version>0.1.0-SNAPSHOT</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.eclipse.milo</groupId>
+            <artifactId>stack-core</artifactId>
+            <version>${milo-version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.eclipse.milo</groupId>
+            <artifactId>stack-client</artifactId>
+            <version>${milo-version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.eclipse.milo</groupId>
+            <artifactId>stack-server</artifactId>
+            <version>${milo-version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.eclipse.milo</groupId>
+            <artifactId>sdk-core</artifactId>
+            <version>${milo-version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.eclipse.milo</groupId>
+            <artifactId>sdk-client</artifactId>
+            <version>${milo-version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.eclipse.milo</groupId>
+            <artifactId>sdk-server</artifactId>
+            <version>${milo-version}</version>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.felix</groupId>
+                <artifactId>maven-bundle-plugin</artifactId>
+                <extensions>true</extensions>
+                <configuration>
+                    <instructions>
+                        <Embed-Dependency>*;scope=compile|runtime</Embed-Dependency>
+                        <Import-Package>
+                            !javax.annotation,
+                            sun.*;resolution:=optional,
+                            com.sun.*;resolution:=optional,
+                            *
+                        </Import-Package>
+                        <Require-Capability>osgi.ee;filter:="(&amp;(osgi.ee=JavaSE)(version=1.7))"</Require-Capability>
+                    </instructions>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>
