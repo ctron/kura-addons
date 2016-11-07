@@ -1,186 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>de.dentrassi.kura.amqp</groupId>
-    <artifactId>de.dentrassi.kura.amqp-parent</artifactId>
-    <version>0.0.4-SNAPSHOT</version>
+    <parent>
+      <groupId>de.dentrassi.kura.addons</groupId>
+      <artifactId>kura-addons</artifactId>
+      <version>0.1.0-SNAPSHOT</version>
+    </parent>
+
+    <artifactId>amqp</artifactId>
     <packaging>pom</packaging>
 
-    <name>AMQP example for Eclipse Kura</name>
-    <description>This is an example project on how to deploy AMQP to Eclipse Kura</description>
-
-    <url>https://github.com/ctron/de.dentrassi.kura.amqp</url>
-
-    <inceptionYear>2016</inceptionYear>
-
-    <licenses>
-        <license>
-            <name>The Apache Software License, Version 2.0</name>
-            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
-            <distribution>repo</distribution>
-        </license>
-    </licenses>
-
-    <developers>
-        <developer>
-            <id>ctron</id>
-            <name>Jens Reimann</name>
-            <email>jreimann@redhat.com</email>
-            <url>https://dentrassi.de</url>
-
-            <organization>Red Hat</organization>
-            <organizationUrl>http://redhat.com</organizationUrl>
-        </developer>
-    </developers>
-
-    <scm>
-        <url>https://github.com/ctron/de.dentrassi.kura.amqp</url>
-        <connection>scm:git:git@github.com:ctron/de.dentrassi.kura.amqp.git</connection>
-        <tag>HEAD</tag>
-    </scm>
-
-    <distributionManagement>
-        <snapshotRepository>
-            <id>ossrh</id>
-            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
-        </snapshotRepository>
-        <repository>
-            <id>ossrh</id>
-            <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
-        </repository>
-    </distributionManagement>
-
-    <issueManagement>
-        <url>https://github.com/ctron/de.dentrassi.kura.amqp/issues</url>
-        <system>GitHub Issues</system>
-    </issueManagement>
-
-    <properties>
-        <camel-version>2.17.2</camel-version>
-        <spring-version>4.1.4.RELEASE_2</spring-version>
-        <netty-version>4.0.41.Final</netty-version>
-    </properties>
+    <name>AMQP addons for Eclipse Kura™</name>
+    <description>This project is an addon for Eclipse Kura providing AMQP support</description>
 
     <modules>
         <module>de.dentrassi.kura.camel.amqp.runtime</module>
+        <module>de.dentrassi.kura.example.camel.amqp</module>
     </modules>
-
-    <build>
-        <pluginManagement>
-            <plugins>
-                <plugin>
-                    <groupId>de.dentrassi.maven</groupId>
-                    <artifactId>osgi-dp</artifactId>
-                    <version>0.3.0</version>
-                </plugin>
-
-                <plugin>
-                    <groupId>org.apache.felix</groupId>
-                    <artifactId>maven-bundle-plugin</artifactId>
-                    <version>3.2.0</version>
-                    <extensions>true</extensions>
-                </plugin>
-
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-compiler-plugin</artifactId>
-                    <version>3.5.1</version>
-                    <configuration>
-                        <source>1.7</source>
-                        <target>1.7</target>
-                    </configuration>
-                </plugin>
-
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-javadoc-plugin</artifactId>
-                    <version>2.10.3</version>
-                </plugin>
-
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-source-plugin</artifactId>
-                    <version>3.0.0</version>
-                </plugin>
-
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-release-plugin</artifactId>
-                    <version>2.5.3</version>
-                </plugin>
-
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-gpg-plugin</artifactId>
-                    <version>1.6</version>
-                </plugin>
-
-            </plugins>
-        </pluginManagement>
-
-        <plugins>
-
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-source-plugin</artifactId>
-                <executions>
-                    <execution>
-                        <id>attach-sources</id>
-                        <goals>
-                            <goal>jar-no-fork</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-javadoc-plugin</artifactId>
-                <executions>
-                    <execution>
-                        <id>attach-javadocs</id>
-                        <goals>
-                            <goal>jar</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-release-plugin</artifactId>
-                <configuration>
-                    <autoVersionSubmodules>true</autoVersionSubmodules>
-                    <useReleaseProfile>false</useReleaseProfile>
-                    <releaseProfiles>release</releaseProfiles>
-                    <goals>deploy</goals>
-                </configuration>
-            </plugin>
-
-        </plugins>
-    </build>
-
-    <profiles>
-        <profile>
-            <id>release</id>
-            <build>
-                <plugins>
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-gpg-plugin</artifactId>
-                        <executions>
-                            <execution>
-                                <id>sign-artifacts</id>
-                                <phase>verify</phase>
-                                <goals>
-                                    <goal>sign</goal>
-                                </goals>
-                            </execution>
-                        </executions>
-                    </plugin>
-                </plugins>
-            </build>
-        </profile>
-    </profiles>
 
 </project>
