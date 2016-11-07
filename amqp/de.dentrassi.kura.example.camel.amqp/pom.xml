@@ -20,8 +20,11 @@
 
     <repositories>
         <repository>
-            <id>kura.packagedrone</id>
-            <url>http://packagedrone.eclipse.org/maven/eclipse-kura-2.1</url>
+            <id>kura.snapshots</id>
+            <url>https://repo.eclipse.org/content/repositories/kura-snapshots/</url>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
         </repository>
         <repository>
             <id>kura</id>
@@ -34,7 +37,7 @@
             <groupId>org.apache.qpid</groupId>
             <artifactId>qpid-jms-client</artifactId>
         </dependency>
-        
+
         <dependency>
             <groupId>org.osgi</groupId>
             <artifactId>org.osgi.core</artifactId>
@@ -47,13 +50,13 @@
             <version>${camel-version}</version>
         </dependency>
 
-        <dependency> <!-- pulled from kura.packagedrone -->
+        <dependency>
             <groupId>org.eclipse.kura</groupId>
             <artifactId>org.eclipse.kura.camel</artifactId>
             <version>1.1.0-SNAPSHOT</version>
         </dependency>
 
-        <dependency> <!-- pulled from kura.packagedrone -->
+        <dependency>
             <groupId>org.eclipse.kura</groupId>
             <artifactId>org.eclipse.kura.api</artifactId>
             <version>1.0.9</version>
