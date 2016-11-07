@@ -12,7 +12,7 @@
     <artifactId>amqp</artifactId>
     <packaging>pom</packaging>
 
-    <name>AMQP addons for Eclipse Kura™</name>
+    <name>AMQP addon for Eclipse Kura™</name>
     <description>This project is an addon for Eclipse Kura providing AMQP support</description>
 
     <modules>
