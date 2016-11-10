@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>de.dentrassi.kura.addons</groupId>
+        <artifactId>kura-addons</artifactId>
+        <version>0.1.0-SNAPSHOT</version>
+    </parent>
+
+    <artifactId>utils</artifactId>
+    <packaging>pom</packaging>
+
+    <name>Utility addons for Eclipse Kura™</name>
+    <description>This project provides some utilties addons for Eclipse Kura</description>
+
+    <modules>
+        <module>de.dentrassi.kura.addons.utils.fileinstall</module>
+    </modules>
+</project>
