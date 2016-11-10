@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>de.dentrassi.kura.addons</groupId>
+        <artifactId>neoscada</artifactId>
+        <version>0.1.0-SNAPSHOT</version>
+        <relativePath>..</relativePath>
+    </parent>
+
+    <artifactId>de.dentrassi.kura.addons.neoscada</artifactId>
+
+    <packaging>dp</packaging>
+    
+    <properties>
+        <mina-version>2.0.7</mina-version>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>de.dentrassi.camel</groupId>
+            <artifactId>de.dentrassi.camel.neoscada</artifactId>
+            <version>0.1.0-SNAPSHOT</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.eclipse.neoscada.core</groupId>
+            <artifactId>org.eclipse.scada.da.server.ngp</artifactId>
+            <version>0.2.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.eclipse.neoscada.core</groupId>
+            <artifactId>org.eclipse.scada.da.server.common</artifactId>
+            <version>0.3.0</version>
+        </dependency>
+        
+        <!-- transient dependencies -->
+        
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>19.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.servicemix.bundles</groupId>
+            <artifactId>org.apache.servicemix.bundles.jzlib</artifactId>
+            <version>1.1.1_1</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.mina</groupId>
+            <artifactId>mina-core</artifactId>
+            <version>${mina-version}</version>
+        </dependency>
+        
+        <dependency>
+            <groupId>org.apache.mina</groupId>
+            <artifactId>mina-filter-compression</artifactId>
+            <version>${mina-version}</version>
+        </dependency>
+        
+        <dependency>
+            <groupId>commons-beanutils</groupId>
+            <artifactId>commons-beanutils</artifactId>
+            <version>1.8.3</version>
+        </dependency>
+        
+        <dependency>
+            <groupId>commons-collections</groupId>
+            <artifactId>commons-collections</artifactId>
+            <version>3.2.1</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.eclipse.neoscada.base</groupId>
+            <artifactId>org.eclipse.scada.core</artifactId>
+            <version>0.1.0</version>
+        </dependency>
+        
+        <dependency>
+            <groupId>org.eclipse.neoscada.core</groupId>
+            <artifactId>org.eclipse.scada.core.data</artifactId>
+            <version>0.1.0</version>
+        </dependency>
+        
+        <dependency>
+            <groupId>org.eclipse.neoscada.core</groupId>
+            <artifactId>org.eclipse.scada.core.ngp</artifactId>
+            <version>0.1.0</version>
+        </dependency>
+        
+        <dependency>
+            <groupId>org.eclipse.neoscada.core</groupId>
+            <artifactId>org.eclipse.scada.core.ngp.common</artifactId>
+            <version>0.2.0</version>
+        </dependency>
+        
+        <dependency>
+            <groupId>org.eclipse.neoscada.core</groupId>
+            <artifactId>org.eclipse.scada.core.protocol.ngp.codec</artifactId>
+            <version>0.2.0</version>
+        </dependency>
+        
+        <dependency>
+            <groupId>org.eclipse.neoscada.core</groupId>
+            <artifactId>org.eclipse.scada.core.server</artifactId>
+            <version>0.2.0</version>
+        </dependency>
+        
+        <dependency>
+            <groupId>org.eclipse.neoscada.core</groupId>
+            <artifactId>org.eclipse.scada.core.server.common</artifactId>
+            <version>0.3.0</version>
+        </dependency>
+        
+        <dependency>
+            <groupId>org.eclipse.neoscada.core</groupId>
+            <artifactId>org.eclipse.scada.core.server.exporter</artifactId>
+            <version>0.1.0</version>
+        </dependency>
+        
+        <dependency>
+            <groupId>org.eclipse.neoscada.core</groupId>
+            <artifactId>org.eclipse.scada.core.server.ngp</artifactId>
+            <version>0.2.0</version>
+        </dependency>
+        
+        <dependency>
+            <groupId>org.eclipse.neoscada.core</groupId>
+            <artifactId>org.eclipse.scada.core.subscription</artifactId>
+            <version>0.1.0</version>
+        </dependency>
+        
+        <dependency>
+            <groupId>org.eclipse.neoscada.core</groupId>
+            <artifactId>org.eclipse.scada.da.common.ngp</artifactId>
+            <version>0.1.0</version>
+        </dependency>
+        
+        <dependency>
+            <groupId>org.eclipse.neoscada.core</groupId>
+            <artifactId>org.eclipse.scada.da.core.common</artifactId>
+            <version>0.2.0</version>
+        </dependency>
+        
+        <dependency>
+            <groupId>org.eclipse.neoscada.core</groupId>
+            <artifactId>org.eclipse.scada.da.core.server</artifactId>
+            <version>0.3.0</version>
+        </dependency>
+        
+        <dependency>
+            <groupId>org.eclipse.neoscada.core</groupId>
+            <artifactId>org.eclipse.scada.da.data</artifactId>
+            <version>0.1.0</version>
+        </dependency>
+        
+        <dependency>
+            <groupId>org.eclipse.neoscada.core</groupId>
+            <artifactId>org.eclipse.scada.da.protocol.ngp.codec</artifactId>
+            <version>0.2.0</version>
+        </dependency>
+        
+        <dependency>
+            <groupId>org.eclipse.neoscada.protocols</groupId>
+            <artifactId>org.eclipse.scada.protocol.common</artifactId>
+            <version>0.2.0</version>
+        </dependency>
+        
+        <dependency>
+            <groupId>org.eclipse.neoscada.protocols</groupId>
+            <artifactId>org.eclipse.scada.protocol.ngp.common</artifactId>
+            <version>0.3.0</version>
+        </dependency>
+        
+        <dependency>
+            <groupId>org.eclipse.neoscada.base</groupId>
+            <artifactId>org.eclipse.scada.sec</artifactId>
+            <version>0.1.0</version>
+        </dependency>
+        
+        <dependency>
+            <groupId>org.eclipse.neoscada.base</groupId>
+            <artifactId>org.eclipse.scada.sec.audit.log.slf4j</artifactId>
+            <version>0.1.0</version>
+        </dependency>
+        
+        <dependency>
+            <groupId>org.eclipse.neoscada.base</groupId>
+            <artifactId>org.eclipse.scada.sec.auth.logon</artifactId>
+            <version>0.1.0</version>
+        </dependency>
+        
+        <dependency>
+            <groupId>org.eclipse.neoscada.base</groupId>
+            <artifactId>org.eclipse.scada.sec.osgi</artifactId>
+            <version>0.1.0</version>
+        </dependency>
+        
+        <dependency>
+            <groupId>org.eclipse.neoscada.base</groupId>
+            <artifactId>org.eclipse.scada.sec.utils</artifactId>
+            <version>0.1.0</version>
+        </dependency>
+        
+        <dependency>
+            <groupId>org.eclipse.neoscada.utils</groupId>
+            <artifactId>org.eclipse.scada.utils</artifactId>
+            <version>0.3.0</version>
+        </dependency>
+        
+        <dependency>
+            <groupId>org.eclipse.neoscada.utils</groupId>
+            <artifactId>org.eclipse.scada.utils.osgi</artifactId>
+            <version>0.1.0</version>
+        </dependency>
+        
+        <dependency>
+            <groupId>org.eclipse.neoscada.utils</groupId>
+            <artifactId>org.eclipse.scada.utils.stats</artifactId>
+            <version>0.1.0</version>
+        </dependency>
+
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>de.dentrassi.maven</groupId>
+                <artifactId>osgi-dp</artifactId>
+                <extensions>true</extensions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.felix</groupId>
+                <artifactId>maven-bundle-plugin</artifactId>
+                <extensions>true</extensions>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>

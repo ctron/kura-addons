@@ -20,7 +20,12 @@
             <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
             <distribution>repo</distribution>
         </license>
-    </licenses>
+        <license>
+            <name>Eclipse Public License 1.0</name>
+            <url>https://www.eclipse.org/legal/epl-v10.html</url>
+            <distribution>repo</distribution>
+        </license>
+   </licenses>
 
     <developers>
         <developer>
@@ -60,12 +65,16 @@
         <camel-version>2.17.2</camel-version>
         <spring-version>4.1.4.RELEASE_2</spring-version>
         <netty-version>4.0.41.Final</netty-version>
+        
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
     <modules>
         <module>amqp</module>
         <module>milo</module>
+        <module>neoscada</module>
         <module>snmp</module>
+        <module>utils</module>
     </modules>
 
     <build>
