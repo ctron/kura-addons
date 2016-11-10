@@ -13,7 +13,7 @@
     <artifactId>milo-wrapper</artifactId>
 
     <packaging>bundle</packaging>
-
+    
     <repositories>
         <repository>
             <id>oss</id>

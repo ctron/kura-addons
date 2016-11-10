@@ -15,6 +15,14 @@
     <name>AMQP addon for Eclipse Kura™</name>
     <description>This project is an addon for Eclipse Kura providing AMQP support</description>
 
+    <licenses>
+        <license>
+            <name>The Apache Software License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+            <distribution>repo</distribution>
+        </license>
+   </licenses>
+
     <modules>
         <module>de.dentrassi.kura.addons.camel.amqp</module>
         <module>de.dentrassi.kura.example.camel.amqp</module>

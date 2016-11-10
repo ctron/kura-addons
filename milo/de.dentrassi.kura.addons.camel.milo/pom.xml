@@ -13,7 +13,7 @@
     <artifactId>de.dentrassi.kura.addons.milo</artifactId>
 
     <packaging>dp</packaging>
-
+    
     <repositories>
         <repository>
             <id>oss</id>
