@@ -25,7 +25,6 @@
 
     <modules>
         <module>de.dentrassi.kura.addons.camel.amqp</module>
-        <module>de.dentrassi.kura.example.camel.amqp</module>
     </modules>
 
     <dependencyManagement>
