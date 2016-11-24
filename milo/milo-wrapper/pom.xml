@@ -79,10 +79,15 @@
                             com.sun.*;resolution:=optional,
                             *
                         </Import-Package>
+                        <Export-Package>
+                            !*.internal.*,
+                            org.apache.camel.component.milo.*
+                        </Export-Package>
                         <Export-Service>
                             org.apache.camel.spi.ComponentResolver;component=milo-server,
                             org.apache.camel.spi.ComponentResolver;component=milo-client
                         </Export-Service>
+                        <!-- override with Java 7, drop for Kura 3.0.0 -->
                         <Require-Capability>osgi.ee;filter:="(&amp;(osgi.ee=JavaSE)(version=1.7))"</Require-Capability>
                     </instructions>
                 </configuration>
