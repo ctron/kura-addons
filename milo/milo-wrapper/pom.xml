@@ -75,6 +75,8 @@
                         <Embed-Dependency>*;scope=compile|runtime;inline=true</Embed-Dependency>
                         <Import-Package>
                             !javax.annotation,
+                            !org.eclipse.milo.*,
+                            org.apache.camel.component.milo.*,
                             sun.*;resolution:=optional,
                             com.sun.*;resolution:=optional,
                             *
