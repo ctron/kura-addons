@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<configuration xmlns="urn:activemq"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="
+    urn:activemq https://raw.githubusercontent.com/apache/activemq-artemis/master/artemis-server/src/main/resources/schema/artemis-server.xsd
+    urn:activemq:core https://raw.githubusercontent.com/apache/activemq-artemis/master/artemis-server/src/main/resources/schema/artemis-configuration.xsd
+    urn:activemq:jms https://raw.githubusercontent.com/apache/activemq-artemis/master/artemis-jms-server/src/main/resources/schema/artemis-jms.xsd
+    ">
+
+    <core xmlns="urn:activemq:core">
+        <persistence-enabled>false</persistence-enabled>
+        
+        <acceptors>
+            <acceptor name="netty-acceptor">tcp://localhost:61616</acceptor>
+            <acceptor name="amqp-acceptor">tcp://localhost:5672?protocols=AMQP</acceptor>
+            <acceptor name="mqtt-acceptor">tcp://localhost:1883?protocols=MQTT</acceptor>
+        </acceptors>
+        
+        <resolve-protocols>false</resolve-protocols>
+        
+        <security-settings>
+            <!-- WARNING: don't try this at home -->
+            <security-setting match="#">
+                <permission type="createDurableQueue" roles="guest"/>
+                <permission type="deleteDurableQueue" roles="guest"/>
+                <permission type="createNonDurableQueue" roles="guest"/>
+                <permission type="deleteNonDurableQueue" roles="guest"/>
+                <permission type="consume" roles="guest"/>
+                <permission type="send" roles="guest"/>
+            </security-setting>
+        </security-settings>
+
+    </core>
+
+    <jms xmlns="urn:activemq:jms">
+        <topic name="TEST.T.1" />
+    </jms>
+
+</configuration>

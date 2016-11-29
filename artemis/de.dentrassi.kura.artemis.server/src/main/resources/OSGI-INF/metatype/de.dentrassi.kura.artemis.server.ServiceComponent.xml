@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<MetaData xmlns="http://www.osgi.org/xmlns/metatype/v1.2.0" localization="en_us">
+    <OCD id="de.dentrassi.kura.artemis.server.ServiceComponent"
+         name="ActiveMQ Artemis Broker" description="An Apache ActiveMQ Artemis broker instance">
+        
+        <AD id="brokerXml" name="Broker XML"
+            description="Broker XML configuration|TextArea"
+            type="String"
+            cardinality="1"
+            required="false"
+            default=""/>
+            
+        <AD id="requiredProtocols" name="Required protocols"
+            description="All required protocol factories (e.g. AMQP)"
+            type="String"
+            cardinality="-1"
+            required="false"
+            default="AMQP"
+            />
+            
+        <AD id="users" name="User configuration"
+            description="User configuration in the format: user=password|role1,role2,…|TextArea"
+            type="String"
+            cardinality="1"
+            required="true"
+            />
+            
+        <AD id="defaultUser" name="Default user name"
+            description="The name of the default user"
+            type="String"
+            cardinality="1"
+            required="false"
+            />
+
+    </OCD>
+
+    <Designate pid="de.dentrassi.kura.artemis.server.ServiceComponent">
+        <Object ocdref="de.dentrassi.kura.artemis.server.ServiceComponent"/>
+    </Designate>
+</MetaData>
