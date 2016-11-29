@@ -20,7 +20,7 @@
         <resolve-protocols>false</resolve-protocols>
         
         <security-settings>
-            <!-- WARNING: don't try this at home -->
+            <!-- WARNING: this is only for testing and completely insecure -->
             <security-setting match="#">
                 <permission type="createDurableQueue" roles="guest"/>
                 <permission type="deleteDurableQueue" roles="guest"/>

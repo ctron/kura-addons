@@ -13,7 +13,22 @@ does not publish its artifacts on Maven Central.
 
 This can be done by executing the following command in this directory:
 
-    mvn clean install
-    
+	mvn clean install
+	
 In the folder `de.dentrassi.kura.addons.artemis.server/target` you will find a `.dp` package which
 can be dropped into Kura.
+
+## Example
+
+A very basic test setup would be to enter the following information into the configuration section
+in the Kura Web UI for Artemis:
+
+Broker XML: [de.dentrassi.kura.artemis.server/src/test/resources/example1.xml](de.dentrassi.kura.artemis.server/src/test/resources/example1.xml)
+
+Required protocols: `AMQP, MQTT`
+
+User configuration:
+
+    guest=test12|guest
+
+Default user name: `guest`
