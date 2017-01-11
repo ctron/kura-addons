@@ -72,8 +72,9 @@
 
     <modules>
         <module>amqp</module>
-        <module>paho</module>
+        <module>milo</module>
         <module>neoscada</module>
+        <module>paho</module>
         <module>snmp</module>
         <module>utils</module>
     </modules>
