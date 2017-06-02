@@ -21,7 +21,5 @@
 
     <modules>
         <module>de.dentrassi.kura.addons.camel.milo</module>
-        
-        <module>milo-wrapper</module>
     </modules>
 </project>
