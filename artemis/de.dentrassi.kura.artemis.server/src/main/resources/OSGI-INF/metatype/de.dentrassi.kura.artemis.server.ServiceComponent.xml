@@ -19,7 +19,7 @@
             />
             
         <AD id="users" name="User configuration"
-            description="User configuration in the format: user=password|role1,role2,…|TextArea"
+            description="User configuration in the format: user=password|role1,role2,...|TextArea"
             type="String"
             cardinality="1"
             required="true"
