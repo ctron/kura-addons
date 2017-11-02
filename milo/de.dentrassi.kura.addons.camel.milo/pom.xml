@@ -12,7 +12,7 @@
     <artifactId>de.dentrassi.kura.addons.milo</artifactId>
 
     <packaging>dp</packaging>
-    
+
     <repositories>
         <repository>
             <id>oss</id>
@@ -31,7 +31,6 @@
             <version>0.1.1</version>
         </dependency>
 
-         
         <dependency>
             <groupId>org.eclipse.milo</groupId>
             <artifactId>stack-core</artifactId>
@@ -62,43 +61,6 @@
             <groupId>org.eclipse.milo</groupId>
             <artifactId>sdk-server</artifactId>
             <version>${milo-version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>io.netty</groupId>
-            <artifactId>netty-buffer</artifactId>
-            <version>${netty-version}</version>
-        </dependency>
-        <dependency>
-            <groupId>io.netty</groupId>
-            <artifactId>netty-common</artifactId>
-            <version>${netty-version}</version>
-        </dependency>
-        <dependency>
-            <groupId>io.netty</groupId>
-            <artifactId>netty-codec</artifactId>
-            <version>${netty-version}</version>
-        </dependency>
-        <dependency>
-            <groupId>io.netty</groupId>
-            <artifactId>netty-resolver</artifactId>
-            <version>${netty-version}</version>
-        </dependency>
-        <dependency>
-            <groupId>io.netty</groupId>
-            <artifactId>netty-transport</artifactId>
-            <version>${netty-version}</version>
-        </dependency>
-        <dependency>
-            <groupId>io.netty</groupId>
-            <artifactId>netty-handler</artifactId>
-            <version>${netty-version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>com.google.guava</groupId>
-            <artifactId>guava</artifactId>
-            <version>19.0</version>
         </dependency>
 
         <dependency>
