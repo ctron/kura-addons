@@ -12,12 +12,9 @@ mvn clean install
 
 This should build you all modules which also got uploaded to Maven Central.
 
-There are a few addons however which, as of now, cannot be uploaded on Maven Central,
-like the Artemis addon, which requires a Kura API bundles which are not available on Maven Central.
-
 In order to build other addons just change into the directory and issue `mvn install` manually:
 
 ```shell
-cd artemis
+cd examples
 mvn clean install
 ```
