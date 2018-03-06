@@ -2,6 +2,8 @@
 
 This repository hosts a few addons for [Eclipse Kura™](https://eclipse.org/kura "Link to Eclipse Kura™").
 
+Also see: https://dentrassi.de/kura-addons/
+
 # Compile it yourself
 
 In order to compile all bundles yourself, simply clone this repository and issue the following command:
