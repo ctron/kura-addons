@@ -1,0 +1,29 @@
+package de.dentrassi.drools.examples.example1.rules
+
+import de.dentrassi.kura.addons.drools.examples.examples1.FooBar
+
+global de.dentrassi.kura.addons.drools.examples.examples1.BarFoo barFoo
+
+rule "Positive"
+    dialect "java"
+    when
+        FooBar(value > 0)
+    then
+        barFoo.setResult(1);
+end
+
+rule "Negative"
+    dialect "java"
+    when
+        FooBar(value < 0)
+    then
+        barFoo.setResult(-1);
+end
+
+rule "Zero"
+    dialect "mvel"
+    when
+        f : FooBar(value == 0)
+    then
+        barFoo.setResult(0);
+end
