@@ -5,12 +5,14 @@ into Kura's API, but only shows that running Drools inside of Kura is technicall
 
 ## Installation
 
-You need to install in the `de.dentrassi.kura.addons.drools.core_*.dp` package into a running Kura instance
+You need to install in the `de.dentrassi.kura.addons.drools.core_*.dp` [download][1] package into a running Kura instance
 before installing this example. This provides the basic Drools dependencies in a way Kura can consume them.
 
-Next install the example by adding the package `de.dentrassi.kura.addons.drools.examples.examples1_*.dp` to
+Next install the example by adding the package `de.dentrassi.kura.addons.drools.examples.examples1_*.dp` [download][2] to
 the Kura instance.
 
+[1]: https://repo1.maven.org/maven2/de/dentrassi/kura/addons/de.dentrassi.kura.addons.drools.core/0.5.0/
+[2]: https://repo1.maven.org/maven2/de/dentrassi/kura/addons/drools/examples/de.dentrassi.kura.addons.drools.examples.examples1/0.5.0/
 
 ## Usage
 
