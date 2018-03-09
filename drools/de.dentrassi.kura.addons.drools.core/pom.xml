@@ -50,6 +50,7 @@
             <artifactId>drools-compiler</artifactId>
             <version>${drools.version}</version>
             <exclusions>
+                <!-- ECJ currently offers broken JARs - https://bugs.eclipse.org/bugs/show_bug.cgi?id=532117 -->
                 <exclusion>
                     <groupId>org.eclipse.jdt</groupId>
                     <artifactId>ecj</artifactId>

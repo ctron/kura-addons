@@ -37,14 +37,16 @@ public class DroolsImpl implements Drools {
 
         private Consumer<KnowledgeBuilder> customizer;
 
-        private ClassLoader classLoader;
+        private final ClassLoader classLoader;
         private KnowledgeBuilderConfiguration configuration;
 
         public KnowledgeBuilderBaseBuilderImplementation(final BundleContext context) {
             Objects.requireNonNull(context);
 
+            // get the class loader of the bundle which is our context
             this.classLoader = context.getBundle().adapt(BundleWiring.class).getClassLoader();
 
+            // trigger default configuration
             configure(null, null);
         }
 
@@ -68,6 +70,9 @@ public class DroolsImpl implements Drools {
 
         @Override
         public KieBase build() {
+
+            // TODO: this isn't yet optimal as we always create a new builder instance. We should
+            // at some point allow to cache this.
 
             final KnowledgeBuilder builder = KnowledgeBuilderFactory.newKnowledgeBuilder(configuration);
 
