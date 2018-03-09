@@ -5,7 +5,7 @@
     <parent>
         <groupId>de.dentrassi.kura.addons</groupId>
         <artifactId>kura-addons</artifactId>
-        <version>0.5.0-SNAPSHOT</version>
+        <version>0.5.0</version>
     </parent>
 
     <artifactId>neoscada</artifactId>
