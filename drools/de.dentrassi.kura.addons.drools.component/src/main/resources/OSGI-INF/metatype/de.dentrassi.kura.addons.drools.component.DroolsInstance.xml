@@ -4,6 +4,10 @@
   <OCD id="de.dentrassi.kura.addons.drools.component.DroolsInstance" name="Drools instance" description="This is an example Drools based service">
     <AD id="id" type="String" name="ID" description="The ID of the session"/>
     <AD id="enabled" type="Boolean" name="Enabled" description="Enables the instance" default="true"/>
+    <AD id="eventProcessingType" type="String" name="Event Processing Type" description="The event processing type">
+        <Option label="Cloud" value="CLOUD" />
+        <Option label="Stream" value="STREAM" />
+    </AD>
     <AD id="type" type="String" name="Rules Type" description="The type of the rules">
         <Option label="Drools Rule Language" value="DRL" />
         <Option label="Drools XML Rule Language" value="XDRL" />

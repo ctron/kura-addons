@@ -20,6 +20,9 @@ import java.util.Properties;
 import java.util.function.Consumer;
 
 import org.kie.api.KieBase;
+import org.kie.api.KieBaseConfiguration;
+import org.kie.api.builder.KieFileSystem;
+import org.kie.api.builder.ReleaseId;
 import org.kie.internal.builder.KnowledgeBuilder;
 import org.kie.internal.builder.KnowledgeBuilderConfiguration;
 import org.osgi.framework.BundleContext;
@@ -35,11 +38,38 @@ public interface Drools {
             return configure(null, customizer);
         }
 
+        public KnowledgeBuilderBaseBuilder configureBase(Properties properties,
+                final Consumer<KieBaseConfiguration> customizer);
+
+        public default KnowledgeBuilderBaseBuilder configureBase(final Consumer<KieBaseConfiguration> customizer) {
+            return configureBase(null, customizer);
+        }
+
         public KnowledgeBuilderBaseBuilder customize(Consumer<KnowledgeBuilder> customizer);
 
         public KieBase build();
 
     }
 
+    /**
+     * @deprecated This is untested
+     */
+    @Deprecated
+    public interface KieBaseBuilder {
+
+        public KieBaseBuilder baseConfigurationProperties(Properties baseConfigurationProperties);
+
+        public KieBaseBuilder customizeBaseConfiguration(Consumer<KieBaseConfiguration> customizeBaseConfiguration);
+
+        public KieBaseBuilder releaseId(ReleaseId releaseId);
+
+        public KieBaseBuilder fileSystem(Consumer<KieFileSystem> fileSystem);
+
+        public KieBase build();
+
+    }
+
     public KnowledgeBuilderBaseBuilder newKnowledgeBuilderBaseBuilder(BundleContext context);
+
+    public KieBaseBuilder newKieBaseBuilder(BundleContext context);
 }

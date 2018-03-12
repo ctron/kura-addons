@@ -25,6 +25,7 @@ import java.util.UUID;
 
 import org.drools.core.io.impl.ReaderResource;
 import org.eclipse.kura.configuration.ConfigurableComponent;
+import org.kie.api.conf.EventProcessingOption;
 import org.kie.api.io.ResourceType;
 import org.kie.api.runtime.KieSession;
 import org.osgi.framework.BundleContext;
@@ -61,6 +62,7 @@ public class DroolsInstance implements ConfigurableComponent {
         }
 
         final String id = Configuration.asString(properties, "id", UUID.randomUUID().toString());
+        final String eventProcessingOptionString = Configuration.asString(properties, "eventProcessingOption");
         final String rules = Configuration.asString(properties, "rules");
         final String type = Configuration.asString(properties, "type", "DRL");
 
@@ -74,13 +76,32 @@ public class DroolsInstance implements ConfigurableComponent {
 
         final ResourceType resourceType = ResourceType.getResourceType(type);
 
-        this.session = this.drools.newKnowledgeBuilderBaseBuilder(context).customize(builder -> {
+        final EventProcessingOption eventProcessingOption;
+        if (eventProcessingOptionString != null) {
+            eventProcessingOption = EventProcessingOption.determineEventProcessingMode(eventProcessingOptionString);
+        } else {
+            eventProcessingOption = null;
+        }
 
-            if (resource != null) {
-                builder.add(resource, resourceType);
-            }
+        this.session = this.drools
 
-        }).build().newKieSession();
+                .newKnowledgeBuilderBaseBuilder(context)
+
+                .configureBase(builder -> {
+                    if (eventProcessingOption != null) {
+                        builder.setOption(eventProcessingOption);
+                    }
+                })
+
+                .customize(builder -> {
+
+                    if (resource != null) {
+                        builder.add(resource, resourceType);
+                    }
+
+                })
+                .build()
+                .newKieSession();
 
         setupGlobals(this.session);
 
