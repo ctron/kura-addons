@@ -25,16 +25,21 @@ import org.eclipse.kura.wire.WireComponent;
 import org.eclipse.kura.wire.WireEnvelope;
 import org.eclipse.kura.wire.WireHelperService;
 import org.eclipse.kura.wire.WireReceiver;
+import org.kie.api.runtime.rule.EntryPoint;
 import org.osgi.service.component.annotations.Activate;
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.Deactivate;
 import org.osgi.service.component.annotations.Modified;
 import org.osgi.service.component.annotations.Reference;
 
+import de.dentrassi.kura.addons.drools.Configuration;
+
 @Component(enabled = true, configurationPolicy = REQUIRE, service = { ConfigurableComponent.class, WireComponent.class,
         WireReceiver.class, org.osgi.service.wireadmin.Consumer.class }, property = {
                 "service.pid=de.dentrassi.kura.addons.drools.component.wires.DroolsInsert" })
 public class DroolsInsert extends AbstractDroolsWireComponent implements WireReceiver {
+
+    private String entryPoint;
 
     @Override
     @Reference
@@ -45,6 +50,7 @@ public class DroolsInsert extends AbstractDroolsWireComponent implements WireRec
     @Override
     @Activate
     protected void activate(final Map<String, ?> properties) throws Exception {
+        this.entryPoint = Configuration.asString(properties, "entryPoint");
         super.activate(properties);
     }
 
@@ -64,7 +70,17 @@ public class DroolsInsert extends AbstractDroolsWireComponent implements WireRec
     public void onWireReceive(final WireEnvelope envelope) {
 
         withSession(session -> {
-            session.insert(envelope);
+
+            EntryPoint ep = session;
+            if (this.entryPoint != null && !this.entryPoint.isEmpty()) {
+                ep = session.getEntryPoint(this.entryPoint);
+            }
+
+            if (ep == null) {
+                return;
+            }
+
+            ep.insert(envelope);
             session.fireAllRules();
         });
 

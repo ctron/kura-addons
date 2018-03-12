@@ -3,6 +3,7 @@
 
   <OCD id="de.dentrassi.kura.addons.drools.component.wires.DroolsInsert" name="Drools Insert" description="Drools Insert">
     <AD id="session.id" type="String" name="ID" description="The ID of the drools session"/>
+    <AD id="entryPoint" type="String" name="Entry Point" description="The name of entry point. May be empty to use the main session entry point." cardinality="0" required="false"/>
   </OCD>
 
   <Designate pid="de.dentrassi.kura.addons.drools.component.wires.DroolsInsert" factoryPid="de.dentrassi.kura.addons.drools.component.wires.DroolsInsert">
