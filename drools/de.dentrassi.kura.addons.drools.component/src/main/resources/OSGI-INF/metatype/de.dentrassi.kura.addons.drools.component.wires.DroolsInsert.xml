@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metatype:MetaData xmlns:metatype="http://www.osgi.org/xmlns/metatype/v1.2.0">
+
+  <OCD id="de.dentrassi.kura.addons.drools.component.wires.DroolsInsert" name="Drools Insert" description="Drools Insert">
+    <AD id="session.id" type="String" name="ID" description="The ID of the drools session"/>
+  </OCD>
+
+  <Designate pid="de.dentrassi.kura.addons.drools.component.wires.DroolsInsert" factoryPid="de.dentrassi.kura.addons.drools.component.wires.DroolsInsert">
+    <Object ocdref="de.dentrassi.kura.addons.drools.component.wires.DroolsInsert"/>
+  </Designate>
+</metatype:MetaData>

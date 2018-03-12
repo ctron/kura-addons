@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metatype:MetaData xmlns:metatype="http://www.osgi.org/xmlns/metatype/v1.2.0">
+
+  <OCD id="de.dentrassi.kura.addons.drools.component.wires.DroolsListen" name="Drools Listen" description="Drools listen">
+    <AD id="session.id" type="String" name="ID" description="The ID of the drools session"/>
+    <AD id="global.name" type="String" name="Global Name" description="The name of the global which will receive the event API"/>
+  </OCD>
+
+  <Designate pid="de.dentrassi.kura.addons.drools.component.wires.DroolsListen" factoryPid="de.dentrassi.kura.addons.drools.component.wires.DroolsListen">
+    <Object ocdref="de.dentrassi.kura.addons.drools.component.wires.DroolsListen"/>
+  </Designate>
+</metatype:MetaData>

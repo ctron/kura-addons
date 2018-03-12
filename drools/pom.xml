@@ -40,6 +40,7 @@
     <modules>
         <module>de.dentrassi.kura.addons.drools.ecj</module>
         <module>de.dentrassi.kura.addons.drools.core</module>
+        <module>de.dentrassi.kura.addons.drools.component</module>
 
         <module>de.dentrassi.kura.addons.drools.examples.example1</module>
     </modules>

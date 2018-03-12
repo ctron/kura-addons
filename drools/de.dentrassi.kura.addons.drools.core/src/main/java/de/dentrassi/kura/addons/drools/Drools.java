@@ -31,7 +31,7 @@ public interface Drools {
         public KnowledgeBuilderBaseBuilder configure(Properties properties,
                 Consumer<KnowledgeBuilderConfiguration> customizer);
 
-        public default KnowledgeBuilderBaseBuilder configure(Consumer<KnowledgeBuilderConfiguration> customizer) {
+        public default KnowledgeBuilderBaseBuilder configure(final Consumer<KnowledgeBuilderConfiguration> customizer) {
             return configure(null, customizer);
         }
 

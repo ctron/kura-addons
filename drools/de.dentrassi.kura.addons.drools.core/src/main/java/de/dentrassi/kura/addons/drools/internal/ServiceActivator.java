@@ -47,7 +47,7 @@ public class ServiceActivator {
     private static final Collection<?> REQUIRED_CLASSES = new HashSet<>(
             Arrays.asList("org.kie.internal.builder.KnowledgeBuilderFactoryService", "org.kie.api.KieServices"));
 
-    private DroolsImpl drools = new DroolsImpl();
+    private final DroolsImpl drools = new DroolsImpl();
 
     private ServiceDiscoveryImpl serviceDiscovery;
 
@@ -113,11 +113,11 @@ public class ServiceActivator {
 
     protected void publish(final boolean state) {
         if (state) {
-            if (registration == null) {
+            if (this.registration == null) {
 
                 if (logger.isInfoEnabled()) {
                     logger.info("Current Drools registry:");
-                    for (final String name : serviceDiscovery.getServices().keySet()) {
+                    for (final String name : this.serviceDiscovery.getServices().keySet()) {
                         logger.info("\t{}", name);
                     }
                 }

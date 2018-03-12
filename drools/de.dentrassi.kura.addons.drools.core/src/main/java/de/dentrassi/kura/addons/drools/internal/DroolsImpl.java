@@ -54,7 +54,7 @@ public class DroolsImpl implements Drools {
         public KnowledgeBuilderBaseBuilder configure(final Properties properties,
                 final Consumer<KnowledgeBuilderConfiguration> customizer) {
 
-            this.configuration = KnowledgeBuilderFactory.newKnowledgeBuilderConfiguration(properties, classLoader);
+            this.configuration = KnowledgeBuilderFactory.newKnowledgeBuilderConfiguration(properties, this.classLoader);
             if (customizer != null) {
                 customizer.accept(this.configuration);
             }
@@ -63,7 +63,7 @@ public class DroolsImpl implements Drools {
         }
 
         @Override
-        public KnowledgeBuilderBaseBuilder customize(Consumer<KnowledgeBuilder> customizer) {
+        public KnowledgeBuilderBaseBuilder customize(final Consumer<KnowledgeBuilder> customizer) {
             this.customizer = customizer;
             return this;
         }
@@ -71,16 +71,17 @@ public class DroolsImpl implements Drools {
         @Override
         public KieBase build() {
 
-            // TODO: this isn't yet optimal as we always create a new builder instance. We should
+            // TODO: this isn't yet optimal as we always create a new builder instance. We
+            // should
             // at some point allow to cache this.
 
-            final KnowledgeBuilder builder = KnowledgeBuilderFactory.newKnowledgeBuilder(configuration);
+            final KnowledgeBuilder builder = KnowledgeBuilderFactory.newKnowledgeBuilder(this.configuration);
 
-            if (customizer != null) {
-                customizer.accept(builder);
+            if (this.customizer != null) {
+                this.customizer.accept(builder);
             }
 
-            return callWithClassLoader(classLoader, builder::newKieBase);
+            return callWithClassLoader(this.classLoader, builder::newKieBase);
         }
 
     }

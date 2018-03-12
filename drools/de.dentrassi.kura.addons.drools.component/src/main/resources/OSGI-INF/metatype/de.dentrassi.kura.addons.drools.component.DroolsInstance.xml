@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metatype:MetaData xmlns:metatype="http://www.osgi.org/xmlns/metatype/v1.2.0" localization="en_us">
+
+  <OCD id="de.dentrassi.kura.addons.drools.component.DroolsInstance" name="Drools instance" description="This is an example Drools based service">
+    <AD id="id" type="String" name="ID" description="The ID of the session"/>
+    <AD id="enabled" type="Boolean" name="Enabled" description="Enables the instance" default="true"/>
+    <AD id="type" type="String" name="Rules Type" description="The type of the rules">
+        <Option label="Drools Rule Language" value="DRL" />
+        <Option label="Drools XML Rule Language" value="XDRL" />
+        <Option label="Predictive Model Markup Language" value="PMML" />
+    </AD>
+    <AD id="rules" type="String" name="Rules" description="The rules|TextArea"/>
+  </OCD>
+
+  <Designate pid="de.dentrassi.kura.addons.drools.component.DroolsInstance" factoryPid="de.dentrassi.kura.addons.drools.component.DroolsInstance">
+    <Object ocdref="de.dentrassi.kura.addons.drools.component.DroolsInstance"/>
+  </Designate>
+
+</metatype:MetaData>
