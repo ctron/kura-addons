@@ -27,15 +27,59 @@ A simple example for dumping events would be:
 package foo.bar
 
 import org.eclipse.kura.wire.WireEnvelope
+import org.eclipse.kura.wire.WireRecord
+import org.eclipse.kura.type.TypedValue
+import org.drools.core.factmodel.Fact
 
 global de.dentrassi.kura.addons.drools.component.wires.DroolsWireEventProxy wire
 
+declare WireEnvelope
+    @role( event )
+end
+
+declare WireRecord
+    @role( event )
+end
+
+declare Heartbeat
+    @role( event )
+end
+
 rule "Dump"
-      dialect "mvel"
+    dialect "mvel"
   when
       we : WireEnvelope()
   then
       System.out.println( we );
       wire.publish(we.getRecords());
+end
+
+rule "Open Envelope"
+    dialect "java"
+  when
+    envelope : WireEnvelope()
+    record : WireRecord() from envelope.getRecords()
+  then
+    insert(record);
+end
+
+rule "Test"
+    dialect "java"
+  when
+    record : WireRecord()
+    typedValue : TypedValue() from record.getProperties().get("TIMER")
+  then
+    System.out.println("HB");
+    insert(new Heartbeat());
+end
+
+rule "Trigger alarm"
+    dialect "mvel"
+  when
+    $h: Heartbeat()
+    not( Heartbeat( this != $h, this after[0s,10s] $h ))
+  then
+    System.out.println("ALARM");
+    wire.publish("ALARM", true);
 end
 ~~~

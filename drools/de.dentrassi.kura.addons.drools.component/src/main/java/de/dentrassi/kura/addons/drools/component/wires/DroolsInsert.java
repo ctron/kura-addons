@@ -25,7 +25,9 @@ import org.eclipse.kura.wire.WireComponent;
 import org.eclipse.kura.wire.WireEnvelope;
 import org.eclipse.kura.wire.WireHelperService;
 import org.eclipse.kura.wire.WireReceiver;
+import org.kie.api.runtime.KieSession;
 import org.kie.api.runtime.rule.EntryPoint;
+import org.kie.api.runtime.rule.FactHandle;
 import org.osgi.service.component.annotations.Activate;
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.Deactivate;
@@ -40,6 +42,8 @@ import de.dentrassi.kura.addons.drools.Configuration;
 public class DroolsInsert extends AbstractDroolsWireComponent implements WireReceiver {
 
     private String entryPoint;
+    private boolean fireAllRules;
+    private boolean delete;
 
     @Override
     @Reference
@@ -51,6 +55,8 @@ public class DroolsInsert extends AbstractDroolsWireComponent implements WireRec
     @Activate
     protected void activate(final Map<String, ?> properties) throws Exception {
         this.entryPoint = Configuration.asString(properties, "entryPoint");
+        this.fireAllRules = Configuration.asBoolean(properties, "fireAllRules", true);
+        this.delete = Configuration.asBoolean(properties, "delete");
         super.activate(properties);
     }
 
@@ -68,22 +74,33 @@ public class DroolsInsert extends AbstractDroolsWireComponent implements WireRec
 
     @Override
     public void onWireReceive(final WireEnvelope envelope) {
-
         withSession(session -> {
 
-            EntryPoint ep = session;
-            if (this.entryPoint != null && !this.entryPoint.isEmpty()) {
-                ep = session.getEntryPoint(this.entryPoint);
-            }
+            // process atomic
+            session.submit(kieSession -> processReceive(envelope, kieSession));
 
-            if (ep == null) {
-                return;
-            }
-
-            ep.insert(envelope);
-            session.fireAllRules();
         });
+    }
 
+    private void processReceive(final WireEnvelope envelope, final KieSession session) {
+        EntryPoint ep = session;
+        if (this.entryPoint != null && !this.entryPoint.isEmpty()) {
+            ep = session.getEntryPoint(this.entryPoint);
+        }
+
+        if (ep == null) {
+            return;
+        }
+
+        final FactHandle handle = ep.insert(envelope);
+
+        if (this.fireAllRules) {
+            session.fireAllRules();
+        }
+
+        if (this.delete) {
+            ep.delete(handle);
+        }
     }
 
 }

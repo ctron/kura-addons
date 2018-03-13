@@ -10,7 +10,11 @@
  *******************************************************************************/
 package de.dentrassi.kura.addons.drools;
 
+import static java.util.Optional.empty;
+import static java.util.Optional.of;
+
 import java.util.Map;
+import java.util.Optional;
 
 /**
  * A few helper methods for consuming configuration from a properties map
@@ -18,6 +22,40 @@ import java.util.Map;
 public final class Configuration {
 
     private Configuration() {
+    }
+
+    public static Optional<String> asOptionalString(final Map<String, ?> properties, final String key) {
+        return asOptionalString(properties, key, null);
+    }
+
+    public static Optional<String> asOptionalString(final Map<String, ?> properties, final String key,
+            final String defaultValue) {
+        return asOptionalString(properties, key, defaultValue, true);
+    }
+
+    public static Optional<String> asOptionalString(final Map<String, ?> properties, final String key,
+            final String defaultValue, final boolean emptyAsNull) {
+
+        if (properties == null) {
+            return empty();
+        }
+
+        final Object value = properties.get(key);
+        if (value == null) {
+            return empty();
+        }
+
+        final String s = value.toString();
+
+        if (s == null) {
+            return empty();
+        }
+
+        if (emptyAsNull && s.isEmpty()) {
+            return empty();
+        }
+
+        return of(s);
     }
 
     /**

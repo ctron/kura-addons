@@ -16,11 +16,14 @@
 
 package de.dentrassi.kura.addons.drools.component;
 
+import static de.dentrassi.kura.addons.drools.Configuration.asOptionalString;
 import static org.osgi.service.component.annotations.ConfigurationPolicy.REQUIRE;
 
 import java.io.StringReader;
+import java.lang.Thread.UncaughtExceptionHandler;
 import java.util.Hashtable;
 import java.util.Map;
+import java.util.Optional;
 import java.util.UUID;
 
 import org.drools.core.io.impl.ReaderResource;
@@ -28,6 +31,7 @@ import org.eclipse.kura.configuration.ConfigurableComponent;
 import org.kie.api.conf.EventProcessingOption;
 import org.kie.api.io.ResourceType;
 import org.kie.api.runtime.KieSession;
+import org.kie.internal.conf.SequentialAgendaOption;
 import org.osgi.framework.BundleContext;
 import org.osgi.framework.Constants;
 import org.osgi.framework.ServiceRegistration;
@@ -57,14 +61,25 @@ public class DroolsInstance implements ConfigurableComponent {
     public void activate(final BundleContext context, final Map<String, Object> properties) {
 
         this.context = context;
+
         if (!Configuration.asBoolean(properties, "enabled")) {
             return;
         }
 
         final String id = Configuration.asString(properties, "id", UUID.randomUUID().toString());
-        final String eventProcessingOptionString = Configuration.asString(properties, "eventProcessingOption");
+
+        final Optional<EventProcessingOption> eventProcessingOption = asOptionalString(properties,
+                "eventProcessingOption")
+                        .map(EventProcessingOption::determineEventProcessingMode);
+
         final String rules = Configuration.asString(properties, "rules");
         final String type = Configuration.asString(properties, "type", "DRL");
+
+        final Optional<SequentialAgendaOption> sequentialAgendaOption = asOptionalString(properties,
+                "sequentialAgendaOption")
+                        .map(SequentialAgendaOption::valueOf);
+
+        final boolean fireUntilHalt = Configuration.asBoolean(properties, "fireUntilHalt");
 
         final ReaderResource resource;
 
@@ -76,21 +91,15 @@ public class DroolsInstance implements ConfigurableComponent {
 
         final ResourceType resourceType = ResourceType.getResourceType(type);
 
-        final EventProcessingOption eventProcessingOption;
-        if (eventProcessingOptionString != null) {
-            eventProcessingOption = EventProcessingOption.determineEventProcessingMode(eventProcessingOptionString);
-        } else {
-            eventProcessingOption = null;
-        }
-
         this.session = this.drools
 
                 .newKnowledgeBuilderBaseBuilder(context)
 
-                .configureBase(builder -> {
-                    if (eventProcessingOption != null) {
-                        builder.setOption(eventProcessingOption);
-                    }
+                .configureBase(config -> {
+
+                    eventProcessingOption.ifPresent(config::setOption);
+                    sequentialAgendaOption.ifPresent(config::setOption);
+
                 })
 
                 .customize(builder -> {
@@ -100,6 +109,7 @@ public class DroolsInstance implements ConfigurableComponent {
                     }
 
                 })
+
                 .build()
                 .newKieSession();
 
@@ -111,6 +121,19 @@ public class DroolsInstance implements ConfigurableComponent {
         serviceProperties.put("drools.session.id", id);
         this.registration = context.registerService(KieSession.class, this.session, serviceProperties);
 
+        if (fireUntilHalt) {
+            final Thread t = new Thread(this.session::fireUntilHalt);
+            t.setContextClassLoader(DroolsInstance.class.getClassLoader());
+            t.setName("DroolsInstance-fireUntilHalt-" + id);
+            t.start();
+            t.setUncaughtExceptionHandler(new UncaughtExceptionHandler() {
+
+                @Override
+                public void uncaughtException(final Thread t, final Throwable e) {
+
+                }
+            });
+        }
     }
 
     protected void setupGlobals(final KieSession session) {
@@ -124,6 +147,7 @@ public class DroolsInstance implements ConfigurableComponent {
             this.registration = null;
         }
         if (this.session != null) {
+            this.session.halt();
             this.session.dispose();
             this.session = null;
         }

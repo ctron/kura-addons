@@ -4,6 +4,8 @@
   <OCD id="de.dentrassi.kura.addons.drools.component.wires.DroolsInsert" name="Drools Insert" description="Drools Insert">
     <AD id="session.id" type="String" name="ID" description="The ID of the drools session"/>
     <AD id="entryPoint" type="String" name="Entry Point" description="The name of entry point. May be empty to use the main session entry point." cardinality="0" required="false"/>
+    <AD id="fireAllRules" type="Boolean" name="Fire all rules" description="Fires all rules after inserting the fact. Should be set to 'false' when the session is 'fire until halt'" default="true"/>
+    <AD id="delete" type="Boolean" name="Delete after fire" description="Deletes the fact after the rules got fired. Only makes sense when the 'Fire all rules' is set to true."/>
   </OCD>
 
   <Designate pid="de.dentrassi.kura.addons.drools.component.wires.DroolsInsert" factoryPid="de.dentrassi.kura.addons.drools.component.wires.DroolsInsert">

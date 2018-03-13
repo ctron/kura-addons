@@ -13,6 +13,11 @@
         <Option label="Drools XML Rule Language" value="XDRL" />
         <Option label="Predictive Model Markup Language" value="PMML" />
     </AD>
+    <AD id="sequentialAgendaOption" type="String" name="Sequential Agenda" default="SEQUENTIAL">
+        <Option label="Sequential" value="SEQUENTIAL" />
+        <Option label="Dynamic" value="DYNAMIC" />
+    </AD>
+    <AD id="fireUntilHalt" type="Boolean" name="Fire Until Halt" description="When enabled this instance will continously process events."/>
     <AD id="rules" type="String" name="Rules" description="The rules|TextArea"/>
   </OCD>
 
