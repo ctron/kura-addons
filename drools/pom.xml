@@ -39,6 +39,9 @@
 
     <modules>
         <module>de.dentrassi.kura.addons.drools.ecj</module>
+        <module>de.dentrassi.kura.addons.drools.drools-pmml</module>
+        <module>de.dentrassi.kura.addons.drools.kie-pmml</module>
+
         <module>de.dentrassi.kura.addons.drools.core</module>
         <module>de.dentrassi.kura.addons.drools.component</module>
 

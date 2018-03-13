@@ -45,7 +45,8 @@ public class ServiceActivator {
     private static final Logger logger = LoggerFactory.getLogger(ServiceActivator.class);
 
     private static final Collection<?> REQUIRED_CLASSES = new HashSet<>(
-            Arrays.asList("org.kie.internal.builder.KnowledgeBuilderFactoryService", "org.kie.api.KieServices"));
+            Arrays.asList("org.kie.internal.builder.KnowledgeBuilderFactoryService", "org.kie.api.KieServices",
+                    "org.drools.compiler.compiler.PMMLCompiler", "org.kie.api.io.KieResources"));
 
     private final DroolsImpl drools = new DroolsImpl();
 

@@ -75,10 +75,7 @@ public class DroolsInsert extends AbstractDroolsWireComponent implements WireRec
     @Override
     public void onWireReceive(final WireEnvelope envelope) {
         withSession(session -> {
-
-            // process atomic
-            session.submit(kieSession -> processReceive(envelope, kieSession));
-
+            processReceive(envelope, session);
         });
     }
 

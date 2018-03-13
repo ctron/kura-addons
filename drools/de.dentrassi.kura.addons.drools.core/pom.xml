@@ -57,15 +57,15 @@
                 </exclusion>
             </exclusions>
         </dependency>
-        <dependency>
-            <groupId>org.drools</groupId>
-            <artifactId>drools-pmml</artifactId>
-            <version>${drools.version}</version>
-        </dependency>
 
         <dependency>
             <groupId>org.kie</groupId>
             <artifactId>kie-api</artifactId>
+            <version>${drools.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.kie</groupId>
+            <artifactId>kie-osgi-integration</artifactId>
             <version>${drools.version}</version>
         </dependency>
         <dependency>
@@ -127,11 +127,40 @@
             <artifactId>de.dentrassi.kura.addons.drools.ecj</artifactId>
             <version>${project.version}</version>
         </dependency>
+        <dependency>
+            <groupId>de.dentrassi.kura.addons</groupId>
+            <artifactId>de.dentrassi.kura.addons.drools.drools-pmml</artifactId>
+            <version>${project.version}</version>
+        </dependency>
 
         <dependency>
             <groupId>org.apache.servicemix.bundles</groupId>
             <artifactId>org.apache.servicemix.bundles.antlr-runtime</artifactId>
             <version>3.5.2_1</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.servicemix.specs</groupId>
+            <artifactId>org.apache.servicemix.specs.activation-api-1.1</artifactId>
+            <version>2.9.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.servicemix.specs</groupId>
+            <artifactId>org.apache.servicemix.specs.jaxb-api-2.2</artifactId>
+            <version>2.9.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.servicemix.bundles</groupId>
+            <artifactId>org.apache.servicemix.bundles.jaxb-impl</artifactId>
+            <version>2.2.11_1</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.servicemix.specs</groupId>
+            <artifactId>org.apache.servicemix.specs.stax-api-1.0</artifactId>
+            <version>2.9.0</version>
         </dependency>
 
     </dependencies>
@@ -159,9 +188,10 @@
                 <configuration>
                     <instructions>
                         <Require-Bundle>
-                            org.drools.compiler,
-                            org.kie.api,
-                            org.kie.internal.api
+                            org.drools.compiler;visibility:=reexport,
+                            org.kie.api;visibility:=reexport,
+                            org.kie.internal.api;visibility:=reexport,
+                            de.dentrassi.kura.addons.drools.drools-pmml;visibility:=reexport
                         </Require-Bundle>
                     </instructions>
                 </configuration>

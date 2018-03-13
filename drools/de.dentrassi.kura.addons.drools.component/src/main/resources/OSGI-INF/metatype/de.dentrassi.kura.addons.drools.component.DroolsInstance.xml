@@ -4,21 +4,24 @@
   <OCD id="de.dentrassi.kura.addons.drools.component.DroolsInstance" name="Drools instance" description="This is an example Drools based service">
     <AD id="id" type="String" name="ID" description="The ID of the session"/>
     <AD id="enabled" type="Boolean" name="Enabled" description="Enables the instance" default="true"/>
-    <AD id="eventProcessingType" type="String" name="Event Processing Type" description="The event processing type">
+    <AD id="eventProcessingType" type="String" name="Event Processing Type" description="The event processing type" default="CLOUD">
         <Option label="Cloud" value="CLOUD" />
         <Option label="Stream" value="STREAM" />
-    </AD>
-    <AD id="type" type="String" name="Rules Type" description="The type of the rules">
-        <Option label="Drools Rule Language" value="DRL" />
-        <Option label="Drools XML Rule Language" value="XDRL" />
-        <Option label="Predictive Model Markup Language" value="PMML" />
     </AD>
     <AD id="sequentialAgendaOption" type="String" name="Sequential Agenda" default="SEQUENTIAL">
         <Option label="Sequential" value="SEQUENTIAL" />
         <Option label="Dynamic" value="DYNAMIC" />
     </AD>
-    <AD id="fireUntilHalt" type="Boolean" name="Fire Until Halt" description="When enabled this instance will continously process events."/>
-    <AD id="rules" type="String" name="Rules" description="The rules|TextArea"/>
+    <AD id="fireUntilHalt" type="Boolean" name="Fire Until Halt" description="When enabled this instance will continously process events." default="false"/>
+
+    <AD id="type" type="String" name="Rules Type" description="The type of the rules" default="DRL">
+        <Option label="Drools Rule Language" value="DRL" />
+        <Option label="Drools XML Rule Language" value="XDRL" />
+        <Option label="Predictive Model Markup Language" value="PMML" />
+        <Option label="Composite format (Multipart MIME)" value="COMPOSITE" />
+    </AD>
+    <AD id="rules" type="String" name="Rules" description="The rules. When using Multipart MIME you need to set the header 'Drools-Resource-Type' for each body part|TextArea"/>
+
   </OCD>
 
   <Designate pid="de.dentrassi.kura.addons.drools.component.DroolsInstance" factoryPid="de.dentrassi.kura.addons.drools.component.DroolsInstance">

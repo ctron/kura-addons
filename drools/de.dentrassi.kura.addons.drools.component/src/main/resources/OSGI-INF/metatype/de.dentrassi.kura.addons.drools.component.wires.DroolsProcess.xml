@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metatype:MetaData xmlns:metatype="http://www.osgi.org/xmlns/metatype/v1.2.0">
+
+  <OCD id="de.dentrassi.kura.addons.drools.component.wires.DroolsProcess" name="Drools Process" description="Drools process">
+    <AD id="session.id" type="String" name="ID" description="The ID of the drools session"/>
+
+    <AD id="entryPoint" type="String" name="Entry Point" description="The name of entry point. May be empty to use the main session entry point." cardinality="0" required="false"/>
+    <AD id="fireAllRules" type="Boolean" name="Fire all rules" description="Fires all rules after inserting the fact. Should be set to 'false' when the session is 'fire until halt'" default="true"/>
+    <AD id="delete" type="Boolean" name="Delete after fire" description="Deletes the fact after the rules got fired. Only makes sense when the 'Fire all rules' is set to true."/>
+
+    <AD id="factPackage" type="String" name="Fact Package" description="The fact package name"/>
+    <AD id="factType" type="String" name="Fact Type" description="The fact type name"/>
+    <AD id="inputs" type="String" name="Input" description="Input Fields"/>
+    <AD id="outputs" type="String" name="Outputs" description="Outputs Fields"/>
+  </OCD>
+
+  <Designate pid="de.dentrassi.kura.addons.drools.component.wires.DroolsProcess" factoryPid="de.dentrassi.kura.addons.drools.component.wires.DroolsProcess">
+    <Object ocdref="de.dentrassi.kura.addons.drools.component.wires.DroolsProcess"/>
+  </Designate>
+</metatype:MetaData>
