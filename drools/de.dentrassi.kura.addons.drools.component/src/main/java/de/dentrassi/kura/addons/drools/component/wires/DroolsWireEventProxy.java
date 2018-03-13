@@ -22,6 +22,8 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
+import org.eclipse.kura.type.TypedValue;
+import org.eclipse.kura.type.TypedValues;
 import org.eclipse.kura.wire.WireRecord;
 
 public interface DroolsWireEventProxy {
@@ -51,5 +53,13 @@ public interface DroolsWireEventProxy {
         } else {
             publish(new ArrayList<>(records));
         }
+    }
+
+    public default void publish(final String name, final TypedValue<?> value) {
+        publish(new WireRecord(Collections.singletonMap(name, value)));
+    }
+
+    public default void publish(final String name, final Object value) {
+        publish(name, TypedValues.newTypedValue(value));
     }
 }
