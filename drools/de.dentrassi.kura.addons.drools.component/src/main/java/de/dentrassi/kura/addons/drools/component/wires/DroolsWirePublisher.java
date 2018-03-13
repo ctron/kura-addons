@@ -26,7 +26,7 @@ import org.eclipse.kura.type.TypedValue;
 import org.eclipse.kura.type.TypedValues;
 import org.eclipse.kura.wire.WireRecord;
 
-public interface DroolsWireEventProxy {
+public interface DroolsWirePublisher {
 
     public void publish(List<WireRecord> records);
 

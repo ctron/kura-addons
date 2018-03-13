@@ -51,7 +51,6 @@ rule "Dump"
       we : WireEnvelope()
   then
       System.out.println( we );
-      wire.publish(we.getRecords());
 end
 
 rule "Open Envelope"
@@ -67,19 +66,16 @@ rule "Test"
     dialect "java"
   when
     record : WireRecord()
-    typedValue : TypedValue() from record.getProperties().get("TIMER")
+    typedValue : TypedValue( (value%2) == 0 ) from record.getProperties().get("TIMER")
   then
-    System.out.println("HB");
     insert(new Heartbeat());
 end
 
-rule "Trigger alarm"
+rule "Trigger heartbeat"
     dialect "mvel"
   when
-    $h: Heartbeat()
-    not( Heartbeat( this != $h, this after[0s,10s] $h ))
+    h: Heartbeat()
   then
-    System.out.println("ALARM");
-    wire.publish("ALARM", true);
+    wire.publish("HEARTBEAT", true);
 end
 ~~~

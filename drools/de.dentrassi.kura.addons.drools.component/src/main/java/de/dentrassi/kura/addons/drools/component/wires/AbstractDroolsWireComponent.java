@@ -40,7 +40,6 @@ public abstract class AbstractDroolsWireComponent extends AbstractWireComponent 
 
     protected void setKieSession(final ServiceReference<KieSession> serviceReference,
             final KieSession session) {
-
     }
 
     protected void closeSessionTracker() {

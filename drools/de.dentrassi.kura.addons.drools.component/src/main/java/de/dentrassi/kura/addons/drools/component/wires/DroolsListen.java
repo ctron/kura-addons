@@ -34,7 +34,7 @@ import org.osgi.service.component.annotations.Reference;
 import org.osgi.service.wireadmin.Producer;
 
 import de.dentrassi.kura.addons.drools.Configuration;
-import de.dentrassi.kura.addons.drools.component.wires.internal.DroolsWireEventProxyImpl;
+import de.dentrassi.kura.addons.drools.component.wires.internal.DroolsWirePublisherImpl;
 
 @Component(enabled = true, configurationPolicy = REQUIRE, service = { ConfigurableComponent.class, WireComponent.class,
         WireEmitter.class, Producer.class }, property = {
@@ -82,18 +82,21 @@ public class DroolsListen extends AbstractDroolsWireComponent implements WireEmi
         }
 
         if (this.session != null) {
+            // remove from old session
             this.session.setGlobal(this.globalName, null);
         }
 
+        // set new session
         this.session = session;
 
         if (this.session != null) {
+            // add to new session
             this.session.setGlobal(this.globalName, createEventProxy());
         }
     }
 
-    private DroolsWireEventProxy createEventProxy() {
-        return new DroolsWireEventProxyImpl(this.wireSupport);
+    private DroolsWirePublisher createEventProxy() {
+        return new DroolsWirePublisherImpl(this.wireSupport);
     }
 
 }

@@ -21,12 +21,12 @@ import java.util.List;
 import org.eclipse.kura.wire.WireRecord;
 import org.eclipse.kura.wire.WireSupport;
 
-import de.dentrassi.kura.addons.drools.component.wires.DroolsWireEventProxy;
+import de.dentrassi.kura.addons.drools.component.wires.DroolsWirePublisher;
 
-public class DroolsWireEventProxyImpl implements DroolsWireEventProxy {
+public class DroolsWirePublisherImpl implements DroolsWirePublisher {
     private final WireSupport wire;
 
-    public DroolsWireEventProxyImpl(final WireSupport wire) {
+    public DroolsWirePublisherImpl(final WireSupport wire) {
         this.wire = wire;
     }
 
