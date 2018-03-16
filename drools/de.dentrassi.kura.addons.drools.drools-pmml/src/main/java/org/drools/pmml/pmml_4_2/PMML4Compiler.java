@@ -49,9 +49,6 @@ import org.drools.compiler.compiler.PMMLResource;
 import org.drools.core.io.impl.ByteArrayResource;
 import org.drools.core.io.impl.ClassPathResource;
 import org.drools.core.util.IoUtils;
-import org.drools.pmml.pmml_4_2.PMML4Helper;
-import org.drools.pmml.pmml_4_2.PMMLError;
-import org.drools.pmml.pmml_4_2.PMMLWarning;
 import org.kie.api.KieBase;
 import org.kie.api.KieServices;
 import org.kie.api.builder.model.KieBaseModel;
@@ -571,7 +568,16 @@ public class PMML4Compiler implements PMMLCompiler {
 
     public static void dumpModel(final PMML model, final OutputStream target) {
         try {
-            final JAXBContext jc = JAXBContext.newInstance(PMML.class.getPackage().getName());
+            // FIXME: jreimann - BEGIN: set context class loader for JAXB
+            final JAXBContext jc;
+            final ClassLoader ccl = Thread.currentThread().getContextClassLoader();
+            try {
+                Thread.currentThread().setContextClassLoader(PMML4Compiler.class.getClassLoader());
+                jc = JAXBContext.newInstance(PMML.class.getPackage().getName(), PMML4Compiler.class.getClassLoader());
+            } finally {
+                Thread.currentThread().setContextClassLoader(ccl);
+            }
+            // FIXME: jreimann - END: set context class loader for JAXB
             final Marshaller marshaller = jc.createMarshaller();
             marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
 
