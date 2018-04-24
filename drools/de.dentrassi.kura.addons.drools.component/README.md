@@ -31,7 +31,7 @@ import org.eclipse.kura.wire.WireRecord
 import org.eclipse.kura.type.TypedValue
 import org.drools.core.factmodel.Fact
 
-global de.dentrassi.kura.addons.drools.component.wires.DroolsWireEventProxy wire
+global de.dentrassi.kura.addons.drools.component.wires.DroolsWirePublisher wire
 
 declare WireEnvelope
     @role( event )
@@ -66,7 +66,7 @@ rule "Test"
     dialect "java"
   when
     record : WireRecord()
-    typedValue : TypedValue( (value%2) == 0 ) from record.getProperties().get("TIMER")
+    typedValue : TypedValue( ((value/1000)%2) == 0 ) from record.getProperties().get("TIMER")
   then
     insert(new Heartbeat());
 end
