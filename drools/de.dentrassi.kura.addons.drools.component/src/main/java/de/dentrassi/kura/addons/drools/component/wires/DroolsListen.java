@@ -91,11 +91,11 @@ public class DroolsListen extends AbstractDroolsWireComponent implements WireEmi
 
         if (this.session != null) {
             // add to new session
-            this.session.setGlobal(this.globalName, createEventProxy());
+            this.session.setGlobal(this.globalName, createPublisher());
         }
     }
 
-    private DroolsWirePublisher createEventProxy() {
+    private DroolsWirePublisher createPublisher() {
         return new DroolsWirePublisherImpl(this.wireSupport);
     }
 
