@@ -79,3 +79,11 @@ rule "Trigger heartbeat"
     wire.publish("HEARTBEAT", true);
 end
 ~~~
+
+You can then set up a wire graph like this:
+
+![Example wire graph](src/doc/images/wires_1.png "Example wire graph")
+
+Where `di1` is a "Drools Insert" component and `dl1` is a "Drools Listen" component. Both referencing the
+Drools session id you configured. The field *Global Name* of the "Drools Listen" component also needs to be set
+to the global variable name from the example above: `wire`.
