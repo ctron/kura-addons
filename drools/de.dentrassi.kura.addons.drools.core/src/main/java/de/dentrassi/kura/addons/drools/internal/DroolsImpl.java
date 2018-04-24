@@ -98,9 +98,11 @@ public class DroolsImpl implements Drools {
 
             // new container
 
-            ReleaseId release = this.releaseId;
-            if (release == null) {
+            final ReleaseId release;
+            if (this.releaseId == null) {
                 release = services.getRepository().getDefaultReleaseId();
+            } else {
+                release = this.releaseId;
             }
 
             final KieContainer container = services.newKieContainer(release, this.classLoader);
