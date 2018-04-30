@@ -141,7 +141,7 @@ public class DroolsProcess extends AbstractDroolsWireComponent implements WireRe
         final FactType factType = session.getKieBase().getFactType(this.factPackage, this.factType);
 
         if (factType == null) {
-            logger.warn("Unable to find fact type: {}:{}", this.factPackage, factType);
+            logger.warn("Unable to find fact type: {}:{}", this.factPackage, this.factType);
             return;
         }
 
