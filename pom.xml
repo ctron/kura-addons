@@ -62,7 +62,7 @@
     </issueManagement>
 
     <properties>
-        <camel-version>2.17.2</camel-version>
+        <camel-version>2.21.2</camel-version>
         <spring-version>4.1.4.RELEASE_2</spring-version>
         <slf4j.version>1.7.21</slf4j.version>
 

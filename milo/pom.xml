@@ -16,7 +16,7 @@
     <description>This project is an addon for Eclipse Kura providing OPC UA support</description>
     
     <properties>
-        <milo-version>0.1.5</milo-version>
+        <milo-version>0.2.3</milo-version>
     </properties>
 
     <modules>

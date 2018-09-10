@@ -26,9 +26,9 @@
     <dependencies>
 
         <dependency>
-            <groupId>de.dentrassi.camel.milo</groupId>
+            <groupId>org.apache.camel</groupId>
             <artifactId>camel-milo</artifactId>
-            <version>0.1.1</version>
+            <version>${camel-version}</version>
         </dependency>
 
         <dependency>
@@ -64,6 +64,12 @@
         </dependency>
 
         <dependency>
+            <groupId>org.eclipse.milo</groupId>
+            <artifactId>bsd-parser-core</artifactId>
+            <version>${milo-version}</version>
+        </dependency>
+
+        <dependency>
             <groupId>org.jooq</groupId>
             <artifactId>jool</artifactId>
             <version>0.9.10</version>
@@ -78,7 +84,7 @@
         <dependency>
             <groupId>org.javassist</groupId>
             <artifactId>javassist</artifactId>
-            <version>3.19.0-GA</version>
+            <version>3.20.0-GA</version>
         </dependency>
 
         <dependency>
