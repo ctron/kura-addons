@@ -10,6 +10,7 @@
     </parent>
 
     <artifactId>de.dentrassi.kura.addons.utils.fileinstall</artifactId>
+    <name>Apache FileInstall Package for Eclipse Kura</name>
 
     <packaging>dp</packaging>
 
