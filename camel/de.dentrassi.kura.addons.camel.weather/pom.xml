@@ -9,7 +9,7 @@
         <relativePath>..</relativePath>
     </parent>
 
-    <artifactId>de.dentrassi.kura.addons.weather</artifactId>
+    <artifactId>de.dentrassi.kura.addons.camel.weather</artifactId>
 
     <packaging>dp</packaging>
 

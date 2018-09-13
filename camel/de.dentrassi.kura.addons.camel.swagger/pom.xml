@@ -9,7 +9,7 @@
         <relativePath>..</relativePath>
     </parent>
 
-    <artifactId>de.dentrassi.kura.addons.swagger</artifactId>
+    <artifactId>de.dentrassi.kura.addons.camel.swagger</artifactId>
 
     <packaging>dp</packaging>
 

@@ -9,7 +9,7 @@
         <relativePath>..</relativePath>
     </parent>
 
-    <artifactId>de.dentrassi.kura.addons.groovy</artifactId>
+    <artifactId>de.dentrassi.kura.addons.camel.groovy</artifactId>
 
     <packaging>dp</packaging>
 

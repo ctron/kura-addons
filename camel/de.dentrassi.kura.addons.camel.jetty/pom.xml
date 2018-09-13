@@ -9,7 +9,7 @@
         <relativePath>..</relativePath>
     </parent>
 
-    <artifactId>de.dentrassi.kura.addons.jetty</artifactId>
+    <artifactId>de.dentrassi.kura.addons.camel.jetty</artifactId>
 
     <packaging>dp</packaging>
 

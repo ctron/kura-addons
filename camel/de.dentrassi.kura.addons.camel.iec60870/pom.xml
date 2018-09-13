@@ -11,7 +11,7 @@
 		<relativePath>..</relativePath>
 	</parent>
 
-	<artifactId>de.dentrassi.kura.addons.iec60870</artifactId>
+	<artifactId>de.dentrassi.kura.addons.camel.iec60870</artifactId>
 
 	<packaging>dp</packaging>
 

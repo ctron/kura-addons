@@ -9,7 +9,7 @@
         <relativePath>..</relativePath>
     </parent>
 
-    <artifactId>de.dentrassi.kura.addons.gson</artifactId>
+    <artifactId>de.dentrassi.kura.addons.camel.gson</artifactId>
 
     <packaging>dp</packaging>
 
