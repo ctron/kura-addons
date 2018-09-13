@@ -94,7 +94,7 @@
         <dependency>
             <groupId>de.dentrassi.kura.addons.repackage</groupId>
             <artifactId>io.swagger.parser</artifactId>
-            <version>1.0.33_1</version>
+            <version>${project.version}</version>
         </dependency>
 
         <dependency>

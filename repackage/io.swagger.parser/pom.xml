@@ -9,7 +9,6 @@
     </parent>
 
     <artifactId>io.swagger.parser</artifactId>
-    <version>1.0.33_1</version>
     <packaging>bundle</packaging>
 
     <dependencies>
@@ -31,14 +30,6 @@
                         <Bundle-SymbolicName>${project.artifactId}</Bundle-SymbolicName>
                         <Export-Package>*;version=0</Export-Package>
                     </instructions>
-                </configuration>
-            </plugin>
-
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-deploy-plugin</artifactId>
-                <configuration>
-                    <skip>true</skip>
                 </configuration>
             </plugin>
         </plugins>
