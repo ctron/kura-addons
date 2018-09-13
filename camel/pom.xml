@@ -15,12 +15,12 @@
     <description>This project is a parent to Camel addons for Kura</description>
 
     <modules>
-        <module>de.dentrassi.kura.addons.groovy</module>
-        <module>de.dentrassi.kura.addons.gson</module>
-        <module>de.dentrassi.kura.addons.http</module>
-        <module>de.dentrassi.kura.addons.iec60870</module>
-        <module>de.dentrassi.kura.addons.jetty</module>
-        <module>de.dentrassi.kura.addons.swagger</module>
-        <module>de.dentrassi.kura.addons.weather</module>
+        <module>de.dentrassi.kura.addons.camel.groovy</module>
+        <module>de.dentrassi.kura.addons.camel.gson</module>
+        <module>de.dentrassi.kura.addons.camel.http</module>
+        <module>de.dentrassi.kura.addons.camel.iec60870</module>
+        <module>de.dentrassi.kura.addons.camel.jetty</module>
+        <module>de.dentrassi.kura.addons.camel.swagger</module>
+        <module>de.dentrassi.kura.addons.camel.weather</module>
     </modules>
 </project>
