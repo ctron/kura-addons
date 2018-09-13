@@ -4,7 +4,7 @@
 
     <groupId>de.dentrassi.kura.addons</groupId>
     <artifactId>kura-addons</artifactId>
-    <version>0.5.2-SNAPSHOT</version>
+    <version>0.6.0</version>
     <packaging>pom</packaging>
 
     <name>Addons for Eclipse Kura™</name>
@@ -42,7 +42,7 @@
     <scm>
         <url>https://github.com/ctron/kura-addons</url>
         <connection>scm:git:git@github.com:ctron/kura-addons.git</connection>
-        <tag>HEAD</tag>
+        <tag>kura-addons-0.6.0</tag>
     </scm>
 
     <distributionManagement>
