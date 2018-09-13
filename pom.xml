@@ -73,10 +73,12 @@
 
     <modules>
         <module>amqp</module>
+        <module>camel</module>
         <module>drools</module>
         <module>milo</module>
         <module>neoscada</module>
         <module>paho</module>
+        <module>repackage</module>
         <module>snmp</module>
         <module>utils</module>
     </modules>

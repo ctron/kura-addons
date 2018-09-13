@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>de.dentrassi.kura.addons</groupId>
+        <artifactId>kura-addons</artifactId>
+        <version>0.5.2-SNAPSHOT</version>
+    </parent>
+
+    <artifactId>camel</artifactId>
+    <packaging>pom</packaging>
+
+    <name>Addons to the Camel Runtime in Kura</name>
+    <description>This project is a parent to Camel addons for Kura</description>
+
+    <modules>
+        <module>de.dentrassi.kura.addons.groovy</module>
+        <module>de.dentrassi.kura.addons.gson</module>
+        <module>de.dentrassi.kura.addons.http</module>
+        <module>de.dentrassi.kura.addons.iec60870</module>
+        <module>de.dentrassi.kura.addons.jetty</module>
+        <module>de.dentrassi.kura.addons.swagger</module>
+        <module>de.dentrassi.kura.addons.weather</module>
+    </modules>
+</project>
