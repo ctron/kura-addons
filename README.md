@@ -70,3 +70,17 @@ Provides Camel Swagger support.
 ### Camel Weather
 
 Provides the Camel OpenWeather endpoint.
+
+### ConfigAdmin
+
+Provide Gogo shell commands for interacting with the OSGi ConfigAdmin.
+**Note:** This OSGi ConfigAdmin is something different than the Kura Config Service.
+
+### JMX
+
+Provies an OSGi JMX Management Model Specification implementation, backed by Apache Aries.
+
+### Jolokia
+
+Provides the Jolokia JMX remote API. Including a configurable component for Kura.
+
