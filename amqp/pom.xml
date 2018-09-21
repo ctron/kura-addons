@@ -5,7 +5,7 @@
     <parent>
         <groupId>de.dentrassi.kura.addons</groupId>
         <artifactId>kura-addons</artifactId>
-        <version>0.6.3-SNAPSHOT</version>
+        <version>0.6.3</version>
     </parent>
 
     <artifactId>amqp</artifactId>
