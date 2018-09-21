@@ -61,7 +61,7 @@
                     <execution>
                         <phase>package</phase>
                         <goals>
-                            <goal>package</goal>
+                            <goal>bundle</goal>
                         </goals>
                     </execution>
                 </executions>
