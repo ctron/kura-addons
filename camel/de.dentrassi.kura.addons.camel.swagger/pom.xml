@@ -14,7 +14,7 @@
     <packaging>dp</packaging>
 
     <properties>
-        <jackson.version>2.8.11</jackson.version>
+        <jackson.version>2.10.2</jackson.version>
         <swagger.version>1.5.17</swagger.version>
     </properties>
 
