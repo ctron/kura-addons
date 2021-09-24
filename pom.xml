@@ -4,7 +4,7 @@
 
     <groupId>de.dentrassi.kura.addons</groupId>
     <artifactId>kura-addons</artifactId>
-    <version>0.6.4-SNAPSHOT</version>
+    <version>0.7.1-SNAPSHOT</version>
     <packaging>pom</packaging>
 
     <name>Addons for Eclipse Kura™</name>

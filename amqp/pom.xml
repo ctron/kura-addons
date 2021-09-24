@@ -5,7 +5,7 @@
     <parent>
         <groupId>de.dentrassi.kura.addons</groupId>
         <artifactId>kura-addons</artifactId>
-        <version>0.6.4-SNAPSHOT</version>
+        <version>0.7.1-SNAPSHOT</version>
     </parent>
 
     <artifactId>amqp</artifactId>
@@ -31,13 +31,13 @@
             <dependency>
                 <groupId>org.apache.qpid</groupId>
                 <artifactId>qpid-jms-client</artifactId>
-                <version>0.11.1</version>
+                <version>0.48.0</version>
             </dependency>
 
             <dependency>
                 <groupId>org.apache.qpid</groupId>
                 <artifactId>proton-j</artifactId>
-                <version>0.14.0</version>
+                <version>0.33.3</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
