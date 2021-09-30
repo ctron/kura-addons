@@ -9,7 +9,7 @@
  * Contributors:
  *     Red Hat Inc - initial API and implementation
  */
-package de.dentrassi.kura.examples.ble.microbit.data;
+package de.dentrassi.kura.addons.examples.microbit.data;
 
 import java.util.UUID;
 

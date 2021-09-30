@@ -9,7 +9,7 @@
  * Contributors:
  *     Red Hat Inc - initial API and implementation
  */
-package de.dentrassi.kura.examples.ble.microbit;
+package de.dentrassi.kura.addons.examples.microbit;
 
 import static org.osgi.service.component.annotations.ConfigurationPolicy.REQUIRE;
 
@@ -46,8 +46,8 @@ import org.slf4j.LoggerFactory;
 
 import com.google.gson.GsonBuilder;
 
-import de.dentrassi.kura.examples.ble.microbit.data.Characteristic;
-import de.dentrassi.kura.examples.ble.microbit.data.Service;
+import de.dentrassi.kura.addons.examples.microbit.data.Service;
+import de.dentrassi.kura.addons.examples.microbit.data.Characteristic;
 
 /**
  * A micro:bit BLE example.

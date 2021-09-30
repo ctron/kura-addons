@@ -9,12 +9,12 @@
  * Contributors:
  *     Red Hat Inc - initial API and implementation
  */
-package de.dentrassi.kura.examples.ble.microbit;
+package de.dentrassi.kura.addons.examples.microbit;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import de.dentrassi.kura.examples.ble.microbit.data.UuidParser;
+import de.dentrassi.kura.addons.examples.microbit.data.UuidParser;
 
 public class UuidParserTest {
 

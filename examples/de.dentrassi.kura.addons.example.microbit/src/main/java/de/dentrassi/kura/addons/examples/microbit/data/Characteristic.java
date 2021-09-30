@@ -9,9 +9,9 @@
  * Contributors:
  *     Red Hat Inc - initial API and implementation
  */
-package de.dentrassi.kura.examples.ble.microbit.data;
+package de.dentrassi.kura.addons.examples.microbit.data;
 
-import static de.dentrassi.kura.examples.ble.microbit.data.UuidParser.parse;
+import static de.dentrassi.kura.addons.examples.microbit.data.UuidParser.parse;
 
 import java.nio.ByteBuffer;
 import java.util.function.BiConsumer;

@@ -9,7 +9,7 @@
  * Contributors:
  *     Red Hat Inc - initial API and implementation
  */
-package de.dentrassi.kura.examples.ble.microbit;
+package de.dentrassi.kura.addons.examples.microbit;
 
 import org.osgi.service.metatype.annotations.AttributeDefinition;
 import org.osgi.service.metatype.annotations.Icon;
@@ -19,7 +19,7 @@ import org.osgi.service.metatype.annotations.ObjectClassDefinition;
  * Meta type information for {@link MicrobitComponent}
  */
 @ObjectClassDefinition(
-        id = "de.dentrassi.kura.examples.ble.microbit.MicrobitComponent",
+        id = "de.dentrassi.kura.addons.examples.microbit.MicrobitComponent",
         name = "micro:bit",
         description = "Micro:bit example component",
         icon = {
