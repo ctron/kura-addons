@@ -66,6 +66,8 @@
         <spring-version>4.1.4.RELEASE_2</spring-version>
         <slf4j.version>1.7.21</slf4j.version>
 
+        <kura.api.version>2.1.0</kura.api.version>
+
         <osgi-dp.plugin.version>0.4.0</osgi-dp.plugin.version>
 
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -75,6 +77,7 @@
         <module>amqp</module>
         <module>camel</module>
         <module>drools</module>
+        <module>examples</module>
         <module>milo</module>
         <module>neoscada</module>
         <module>paho</module>
@@ -142,6 +145,11 @@
                     <version>1.6</version>
                 </plugin>
 
+                <plugin>
+                    <artifactId>maven-surefire-plugin</artifactId>
+                    <version>2.22.2</version>
+                </plugin>
+
             </plugins>
         </pluginManagement>
 
@@ -173,6 +181,30 @@
                 <artifactId>jcl-over-slf4j</artifactId>
                 <version>${slf4j.version}</version>
             </dependency>
+
+            <!-- Kura -->
+
+            <dependency>
+                <groupId>org.eclipse.kura</groupId>
+                <artifactId>org.eclipse.kura.api</artifactId>
+                <version>${kura.api.version}</version>
+            </dependency>
+
+            <!-- OSGi -->
+
+            <dependency>
+                <groupId>org.osgi</groupId>
+                <artifactId>org.osgi.service.component.annotations</artifactId>
+                <version>1.3.0</version>
+                <scope>provided</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.osgi</groupId>
+                <artifactId>org.osgi.service.metatype.annotations</artifactId>
+                <version>1.3.0</version>
+                <scope>provided</scope>
+            </dependency>
+
         </dependencies>
     </dependencyManagement>
 
