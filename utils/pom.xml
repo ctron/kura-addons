@@ -12,7 +12,7 @@
     <packaging>pom</packaging>
 
     <name>Utility addons for Eclipse Kura™</name>
-    <description>This project provides some utilties addons for Eclipse Kura</description>
+    <description>This project provides some utilities addons for Eclipse Kura</description>
 
     <modules>
         <module>de.dentrassi.kura.addons.utils.configadmin</module>
