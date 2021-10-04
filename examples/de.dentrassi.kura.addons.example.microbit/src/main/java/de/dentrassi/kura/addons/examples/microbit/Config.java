@@ -57,4 +57,10 @@ import org.osgi.service.metatype.annotations.ObjectClassDefinition;
             description = "This scan all services and characteristics from a device and write it to the log. It can be used to debug data."
     )
     boolean introspect() default false;
+
+    @AttributeDefinition(
+            name = "Device name prefix",
+            description = "The prefix of the Bluetooth device name to look out for."
+    )
+    String namePrefix() default "BBC micro:bit";
 }

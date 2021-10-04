@@ -96,21 +96,6 @@ public class MicrobitComponent implements ConfigurableComponent {
         stop();
     }
 
-    private void tick() {
-
-        logger.info("Ticking ...");
-
-        final var cloudPublisher = this.cloudPublisher;
-        try {
-            if (cloudPublisher != null) {
-                cloudPublisher.publish(makeMessage());
-            }
-        } catch (final Exception e) {
-            logger.warn("Failed to publish", e);
-        }
-
-    }
-
     protected static KuraMessage makeMessage() {
         return new KuraMessage(makePayload());
     }
@@ -153,6 +138,7 @@ public class MicrobitComponent implements ConfigurableComponent {
         logger.info("Starting ...");
         start();
         logger.info("Starting ... done!");
+
     }
 
     private void refreshDevices() {
@@ -192,7 +178,7 @@ public class MicrobitComponent implements ConfigurableComponent {
                 logger.info("\tUUIDs: {}", (Object) device.getUUIDs());
                 logger.info("\tManufacturer Data: {}", device.getManufacturerData());
                 logger.info("\tService Data: {}", device.getServiceData());
-                if (name != null && name.startsWith("BBC micro:bit")) {
+                if (name != null && name.startsWith(config.namePrefix())) {
                     logger.info("Adding device: {}", name);
                     result.add(device);
                 }
