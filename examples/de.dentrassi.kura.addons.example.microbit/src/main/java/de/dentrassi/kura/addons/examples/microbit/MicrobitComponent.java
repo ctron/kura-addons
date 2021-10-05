@@ -23,6 +23,7 @@ import java.util.List;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
+import java.util.regex.Pattern;
 
 import org.eclipse.kura.KuraBluetoothIOException;
 import org.eclipse.kura.KuraBluetoothResourceNotFoundException;
@@ -46,8 +47,8 @@ import org.slf4j.LoggerFactory;
 
 import com.google.gson.GsonBuilder;
 
-import de.dentrassi.kura.addons.examples.microbit.data.Service;
 import de.dentrassi.kura.addons.examples.microbit.data.Characteristic;
+import de.dentrassi.kura.addons.examples.microbit.data.Service;
 
 /**
  * A micro:bit BLE example.
@@ -66,6 +67,7 @@ public class MicrobitComponent implements ConfigurableComponent {
 
     @Reference(cardinality = ReferenceCardinality.OPTIONAL, bind = "setCloudPublisher")
     private CloudPublisher cloudPublisher;
+    private Pattern pattern;
 
     protected void setCloudPublisher(final CloudPublisher cloudPublisher) {
         logger.info("Setting cloud publisher: {}", cloudPublisher);
@@ -111,7 +113,11 @@ public class MicrobitComponent implements ConfigurableComponent {
             return false;
         }
 
-        if (this.config.interfaceName().equals(config.interfaceName())) {
+        if (!this.config.interfaceName().equals(config.interfaceName())) {
+            return true;
+        }
+
+        if (!this.config.namePrefix().equals(config.namePrefix())) {
             return true;
         }
 
@@ -156,6 +162,12 @@ public class MicrobitComponent implements ConfigurableComponent {
             return result;
         }
 
+        final var pattern = this.pattern;
+        if (pattern == null) {
+            logger.info("No pattern set -> no device");
+            return result;
+        }
+
         logger.info("Adapter - name: {}, alias: {}, address: {}, interfaceName: {}, powered: {}, discovering: {}",
                 adapter.getName(),
                 adapter.getAlias(),
@@ -172,13 +184,15 @@ public class MicrobitComponent implements ConfigurableComponent {
             }
 
             logger.info("Begin scan ({} seconds) ...", this.config.scanTime());
+
             for (final var device : adapter.findDevices(this.config.scanTime()).get()) {
                 final var name = device.getName();
                 logger.info("Device - Name: {}, Address: {}, Alias: {}, Icon: {}", name, device.getAddress(), device.getAlias(), device.getIcon());
                 logger.info("\tUUIDs: {}", (Object) device.getUUIDs());
                 logger.info("\tManufacturer Data: {}", device.getManufacturerData());
                 logger.info("\tService Data: {}", device.getServiceData());
-                if (name != null && name.startsWith(config.namePrefix())) {
+
+                if (name != null && pattern.matcher(name).matches()) {
                     logger.info("Adding device: {}", name);
                     result.add(device);
                 }
@@ -353,6 +367,8 @@ public class MicrobitComponent implements ConfigurableComponent {
         if (this.adapter == null) {
             this.adapter = this.bluetooth.getAdapter(this.config.interfaceName());
         }
+
+        this.pattern = Pattern.compile(this.config.namePrefix());
 
         logger.info("Bluetooth adapter ({}) = {}", this.config.interfaceName(), this.adapter);
 

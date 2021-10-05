@@ -59,8 +59,8 @@ import org.osgi.service.metatype.annotations.ObjectClassDefinition;
     boolean introspect() default false;
 
     @AttributeDefinition(
-            name = "Device name prefix",
-            description = "The prefix of the Bluetooth device name to look out for."
+            name = "Device name pattern",
+            description = "A regular expression of the Bluetooth device name to look out for."
     )
-    String namePrefix() default "BBC micro:bit";
+    String namePrefix() default "(^BBC micro\\:bit|^Drogue Low Energy).*";
 }
